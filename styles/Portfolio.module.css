@@ -1,0 +1,19 @@
+.portfolioGrid {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  min-width: 150px;
+}
+
+
+@media screen and (max-width: 900px) {
+  .portfolioGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
