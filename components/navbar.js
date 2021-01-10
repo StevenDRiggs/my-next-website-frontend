@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
+import { withRouter } from 'next/router'
 
 import styles from '../styles/Navbar.module.css'
 
@@ -14,26 +15,28 @@ class Navbar extends Component {
   }
 
   render() {
+    const { router } = this.props
+
     return (
       <nav className={styles.navbar}>
         <ul>
           <Link href='/about'>
             <a>
-              <li className={styles.navlink}>
+              <li className={router.pathname ==='/about' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
                 About
               </li>
             </a>
           </Link>
           <Link href='/portfolio'>
             <a>
-              <li className={styles.navlink}>
+              <li className={router.pathname ==='/portfolio' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
                 Portfolio
               </li>
             </a>
           </Link>
           <Link href='/blog'>
             <a>
-              <li className={styles.navlink} onMouseEnter={this.wtfMouseEnter} onMouseLeave={this.wtfMouseLeave}>
+              <li className={router.pathname === '/blog' ? `${styles.navlink} ${styles.active}` : styles.navlink} onMouseEnter={this.wtfMouseEnter} onMouseLeave={this.wtfMouseLeave}>
                 WTF
               </li>
             </a>
@@ -47,7 +50,7 @@ class Navbar extends Component {
           </Link>
           <Link href='/contact'>
             <a>
-              <li className={styles.navlink}>
+              <li className={router.pathname ==='/contact' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
                 Contact Me
               </li>
             </a>
@@ -59,4 +62,4 @@ class Navbar extends Component {
 }
 
 
-export default Navbar
+export default withRouter(Navbar)
