@@ -36,7 +36,7 @@ class Navbar extends Component {
           </Link>
           <Link href='/blog'>
             <a>
-              <li className={router.pathname === '/blog' ? `${styles.navlink} ${styles.active}` : styles.navlink} onMouseEnter={this.wtfMouseEnter} onMouseLeave={this.wtfMouseLeave}>
+              <li className={router.pathname === '/blog' ? `${styles.navlink} ${styles.active}` : styles.navlink} onMouseEnter={this.wtfMouseEnter} onMouseLeave={this.wtfMouseLeave} onFocus={this.wtfMouseEnter} onBlur={this.wtfMouseLeave}>
                 WTF
               </li>
             </a>

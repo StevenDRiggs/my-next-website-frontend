@@ -1,3 +1,33 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  width: 50vw;
+  height: 50vh;
+  top: 25vh;
+  left: 25vw;
+  background-color: rgb(84, 88, 127);
+}
+
+.modal * {
+  margin: auto;
+}
+
+.modal h2 {
+  font-weight: normal;
+}
+
+.closeBtn {
+  margin: 0 0.5rem 0 0;;
+  float: right;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.closeBtn:hover, .closeBtn:focus {
+  background-color: red;
+}
+
 .resume {
   width: 40vw;
   height: 90vh;
@@ -5,7 +35,7 @@
   top: -25vh;
 }
 
-.downloadBtn, .openNewWindowBtn {
+.btn {
   position: fixed;
   right: 15vw;
   background: radial-gradient(ellipse at center, #d3a9a9, #1d8554);
@@ -20,6 +50,10 @@
   top: 50vh;
 }
 
+.emailResumeBtn {
+  top: 60vh;
+}
+
 
 @media screen and (max-width: 1000px) {
   .resume {
@@ -27,9 +61,16 @@
     top: 0;
   }
 
-  .downloadBtn, .openNewWindowBtn {
+  .btn {
     right: auto;
+  }
+
+  .downloadBtn, .openNewWindowBtn {
     top: 10vh;
+  }
+
+  .emailResumeBtn {
+    top: 20vh;
   }
 
   .downloadBtn {
@@ -45,15 +86,27 @@
   .downloadBtn, .openNewWindowBtn {
     top: 0;
   }
+
+  .emailResumeBtn {
+    top: 10vh;
+  }
 }
 
 @media screen and (max-width: 400px) {
-  .downloadBtn, .openNewWindowBtn {
+  .btn {
     left: auto;
     right: 0;
   }
 
   .openNewWindowBtn {
     top: 4vh;
+  }
+
+  .emailResumeBtn {
+    top: 8vh;
+  }
+
+  .resume {
+    top: 8vh;
   }
 }
