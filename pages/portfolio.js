@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 import CIL from '../images/CIL.svg'
 import Yeti from '../images/Yeti.svg'
@@ -26,7 +27,7 @@ const Portfolio = () => {
       </Link>
       <Link href='#'>
         <a>
-          <CIL className={styles.thumbnail} />
+          <Image src='/images/recipe-calculator.png' alt='Recipe Calculator' width={1440} height={900} className={styles.thumbnail} />
           <caption className={styles.caption}>Recipe Calculator</caption>
         </a>
       </Link>
