@@ -1,4 +1,4 @@
-<svg id="caterpillar" className="row justify-content-center mx-auto" viewBox="0 0 300 300">
+<svg id="caterpillar" viewBox="0 0 300 300">
   <defs>
     <radialGradient id="background-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
       <stop offset="0%" style="stop-color:#FAFAD2;stop-opacity:1" />
