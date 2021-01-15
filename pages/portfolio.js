@@ -14,14 +14,14 @@ const Portfolio = () => {
     <div className={styles.portfolioGrid}>
       <Link href='#'>
         <a>
-          <CIL className={styles.thumbnail} />
-          <caption className={styles.caption}>Calapitter Image Library</caption>
+          <Yeti className={styles.thumbnail} />
+          <caption className={styles.caption}>Yeti The Bookclub App</caption>
         </a>
       </Link>
       <Link href='#'>
         <a>
-          <Yeti className={styles.thumbnail} />
-          <caption className={styles.caption}>Yeti The Bookclub App</caption>
+          <CIL className={styles.thumbnail} />
+          <caption className={styles.caption}>Calapitter Image Library</caption>
         </a>
       </Link>
       <Link href='#'>
