@@ -39,7 +39,7 @@ const Portfolio = () => {
       </Link>
       <Link href='#'>
         <a>
-          <CIL className={styles.thumbnail} />
+          <Image src='/images/sth.png' alt='Seed, Time and Harvest Database' width={1440} height={900} className={styles.thumbnail} />
           <caption className={styles.caption}>Seed, Time and Harvest Database</caption>
         </a>
       </Link>
