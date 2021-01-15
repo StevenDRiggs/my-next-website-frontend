@@ -1,20 +1,46 @@
-<svg viewBox="0 0 500 500">
+<svg id="yeti" viewBox="0 0 500 500">
+    <defs>
+        <clipPath id="yeti-mouth-clip-path">
+            <ellipse cx="220" cy="280" rx="30" ry="20" transform="rotate(-35, 220, 280)" />
+        </clipPath>
+    </defs>
+
+
     <rect x="0" y="0" width="500" height="500" stroke="none" fill="white" />
 
-    <path
+    <path id="yeti-outline"
         stroke="black"
         stroke-width="10"
         fill="none"
         d="M 150,500 C 200,400 150,350 190,325 S 190,320 180,315 Q 175,310 170,222 L 150,175 L 180,220 L 190,200 L 210,195 L 165,150 L 210,190 L 215,110 Q 215,170 220,190 L 220,190 L 230,180 L 235,190 L 240,180 L 245,190 L 250,180 L 255,190 Q 290,150 290,110 V 200 Q 300,200 280,250 C 260,290 280,380 290,390 S 300,400 300,500"
     />
 
-    <g id="eyes">
+    <g id="yeti-eyes">
         <circle cx="200" cy="240" r="7.5" stroke="none" fill="blue" />
         <circle cx="240" cy="230" r="7.5" stroke="none" fill="blue" />
 
-        <g id="eyes-highlights">
+        <g id="yeti-eyes-pupils">
             <circle cx="202.5" cy="237.5" r="2.5" stroke="none" fill="#ffffcc" />
             <circle cx="237.5" cy="232.5" r="2.5" stroke="none" fill="#ffffcc" />
+        </g>
+    </g>
+
+    <g id="yeti-mouth">
+        <ellipse cx="220" cy="280" rx="30" ry="20" stroke="red" stroke-width="5" transform="rotate(-35, 220, 280)" />
+
+        <g id="yeti-mouth-teeth" clip-path="url(#yeti-mouth-clip-path)">
+            <path
+                stroke="antiquelace"
+                stroke-width="5"
+                fill="#ffff66"
+                d="M 200,265 L 205,285 L 210,260 Z"
+            />
+            <path
+                stroke="antiquelace"
+                stroke-width="5"
+                fill="#ffff66"
+                d="M 230,255 L 235,275 L 240,250 Z"
+            />
         </g>
     </g>
 </svg>
