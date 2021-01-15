@@ -33,7 +33,7 @@ const Portfolio = () => {
       </Link>
       <Link href='#'>
         <a>
-          <CIL className={styles.thumbnail} />
+          <Image src='/images/ruled-me-cli.png' alt='Ruled.me Web Scraper CLI' width={1440} height={900} className={styles.thumbnail} />
           <caption className={styles.caption}>Ruled.me Web Scraper CLI</caption>
         </a>
       </Link>
