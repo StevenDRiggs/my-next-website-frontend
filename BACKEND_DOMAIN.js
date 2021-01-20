@@ -1,4 +1,4 @@
-const BACKEND_DOMAIN = 'https://hidden-tor-39231.herokuapp.com/'
+const BACKEND_DOMAIN = 'http://localhost:8080'
 
 
 export default BACKEND_DOMAIN
