@@ -14,8 +14,8 @@ const Portfolio = () => {
     // </div>
     <>
       <div className={styles.portfolioGrid}>
-        <Link href='https://yeti-the-bookclub-app.herokuapp.com' target='_blank'>
-          <a>
+        <Link href='https://yeti-the-bookclub-app.herokuapp.com'>
+          <a target='_blank'>
             <Yeti className={styles.thumbnail} />
             <caption className={styles.caption}>Yeti The Bookclub App</caption>
           </a>
