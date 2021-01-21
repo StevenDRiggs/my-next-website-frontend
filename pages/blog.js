@@ -1,7 +1,7 @@
 const Blog = () => {
   return (
     <div>
-      Blog
+      Blog coming soon!
     </div>
   )
 }
