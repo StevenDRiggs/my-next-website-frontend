@@ -14,17 +14,12 @@ const Portfolio = () => {
     // </div>
     <>
       <div className={styles.portfolioGrid}>
-        <div className={styles.gridCell}>
-          <Link href='#'>
-            <a>
-              <Yeti className={styles.thumbnail} />
-              <caption className={styles.caption}>Yeti The Bookclub App</caption>
-            </a>
-          </Link>
-          <div className={styles.comingSoonDiv}>
-            <p className={styles.comingSoonText}>Coming Soon</p>
-          </div>
-        </div>
+        <Link href='https://yeti-the-bookclub-app.herokuapp.com' target='_blank'>
+          <a>
+            <Yeti className={styles.thumbnail} />
+            <caption className={styles.caption}>Yeti The Bookclub App</caption>
+          </a>
+        </Link>
         <div className={styles.gridCell}>
           <Link href='#'>
             <a>
