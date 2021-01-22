@@ -20,18 +20,12 @@ const Portfolio = () => {
             <caption className={styles.caption}>Yeti The Bookclub App</caption>
           </a>
         </Link>
-        <div className={styles.gridCell}>
-          <Link href='#'>
-            <a>
-              <CIL className={styles.thumbnail} />
-              <caption className={styles.caption}>Calapitter Image Library</caption>
-            </a>
-          </Link>
-          <div className={styles.comingSoonDiv}>
-            <p className={styles.comingSoonText}>Coming Soon</p>
-          </div>
-        </div>
-        <div className={styles.gridCell}>
+        <Link href='https://calapitter-image-library.herokuapp.com'>
+          <a target='_blank'>
+            <CIL className={styles.thumbnail} />
+            <caption className={styles.caption}>Calapitter Image Library</caption>
+          </a>
+        </Link>
           <Link href='#'>
             <a>
               <Image src='/images/recipe-calculator.png' alt='Recipe Calculator' width={1440} height={900} className={styles.thumbnail} />
