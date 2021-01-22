@@ -26,6 +26,7 @@ const Portfolio = () => {
             <caption className={styles.caption}>Calapitter Image Library</caption>
           </a>
         </Link>
+        <div className={styles.gridCell}>
           <Link href='#'>
             <a>
               <Image src='/images/recipe-calculator.png' alt='Recipe Calculator' width={1440} height={900} className={styles.thumbnail} />
