@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 
+import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
+
 import styles from '../styles/Contact.module.css'
-
-
-const BACKEND_DOMAIN = process.env.BACKEND_DOMAIN
 
 
 const initialState = {

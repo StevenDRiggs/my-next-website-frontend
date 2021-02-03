@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 
+import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
+
 import styles from '../styles/EntryModal.module.css'
-
-
-//const BACKEND_DOMAIN = process.env.BACKEND_DOMAIN
 
 
 const initialState = {
@@ -22,7 +21,7 @@ class EntryModal extends Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    fetch(`process.env.BACKEND_DOMAIN}/${this.props.entryType}`, {
+    fetch(`${BACKEND_DOMAIN}/${this.props.entryType}`, {
       method: 'POST',
       mode: 'cors',
       headers: {
