@@ -31,8 +31,10 @@ class EntryModal extends Component {
         user: this.state
       })
     })
-      .then(response => console.log(JSON.stringify(response)))
-      //.then(json => console.log(JSON.stringify(json)))
+      .then(response => response.json())
+    ///////
+      .then(json => console.log(JSON.stringify(json)))
+    ///////
   }
 
   handleChange = event => {
