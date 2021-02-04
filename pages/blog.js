@@ -6,7 +6,7 @@ const Blog = () => {
   return (
     <div>
       <EntryDisplay />
-      <EntryModal entryType='login' />
+      <EntryModal entryType='signup' />
     </div>
   )
 }

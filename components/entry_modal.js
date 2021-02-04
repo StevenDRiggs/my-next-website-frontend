@@ -35,6 +35,10 @@ class EntryModal extends Component {
     ///////
       .then(json => console.log(JSON.stringify(json)))
     ///////
+
+    this.setState({
+      ...initialState,
+    })
   }
 
   handleChange = event => {
