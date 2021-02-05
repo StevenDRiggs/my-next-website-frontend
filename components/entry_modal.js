@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { useCookies } from 'react-cookie'
 
 import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
 
@@ -12,29 +13,49 @@ const initialState = {
   usernameOrEmail: '',
 }
 
+const withCookies = Comp => {
+  return function WrappedComponent(props) {
+    const [ cookies, setCookie, removeCookie ] = useCookies(['sessionInfo'])
+    return <Comp {...props} cookies={cookies} setCookie={setCookie} removeCookie={removeCookie} />
+  }
+}
 
 class EntryModal extends Component {
   state = {
-    ...initialState
+    ...initialState,
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
 
-    fetch(`${BACKEND_DOMAIN}/${this.props.entryType}`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user: this.state
+    const { entryType, setCookie, setAdmin } = this.props
+
+    try {
+      const response = await fetch(`${BACKEND_DOMAIN}/${entryType}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: this.state
+        })
       })
-    })
-      .then(response => response.json())
-    ///////
-      .then(json => console.log(JSON.stringify(json)))
-    ///////
+      const data = await response.json()
+
+      setCookie('sessionInfo', JSON.stringify({
+        token: data.token
+      }), {
+        path: '/',
+        maxAge: 7200,
+        sameSite: true,
+        secure: true
+      })
+
+      setAdmin(data.user.is_admin)
+
+    } catch(error) {
+      console.log(error)
+    }
 
     this.setState({
       ...initialState,
@@ -70,5 +91,4 @@ class EntryModal extends Component {
   }
 }
 
-
-export default EntryModal
+export default withCookies(EntryModal)
