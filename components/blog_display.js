@@ -12,6 +12,10 @@ const initialState = {
 
 
 class BlogDisplay extends Component {
+    state = {
+        ...initialState,
+    }
+
     setView = view => {
       this.setState({
         view: view,
@@ -19,10 +23,16 @@ class BlogDisplay extends Component {
     }
 
     fetchAllPosts = async () => {
-        const posts = await fetch(`${BACKEND_DOMAIN}/posts`)
+        const posts = await fetch(`${BACKEND_DOMAIN}/posts`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         const postsJSON = await posts.json()
 
-        return JSON.parse(postsJSON)
+        return postsJSON
     }
 
     render() {
@@ -30,14 +40,17 @@ class BlogDisplay extends Component {
 
         let jsx
         switch (view) {
-            default:  // 'index'
-                jsx = fetchAllPosts().map(post => (
-                    <Post key={post.id} title={post.title} content={post.content} />
-                ))
+            case 'index':
+                jsx = JSON.stringify(this.fetchAllPosts())
+                //     <Post key={post.id} title={post.title} content={post.content} />
+                // })
+            default:
+                null
         }
 
         return (
             <div className={styles.blogDisplay}>
+                {jsx}
             </div>
         )
     }
