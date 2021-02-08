@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import Link from 'next/link'
 
-import EntryDisplay from '../components/entry_display'
-import EntryModal from '../components/entry_modal'
-import BlogDisplay from '../components/blog_display'
-import parseCookies from '../helpers/parse_cookies'
+import EntryDisplay from '../../components/entry_display'
+import EntryModal from '../../components/entry_modal'
+import parseCookies from '../../helpers/parse_cookies'
 
-import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
+import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
+
+import styles from '../../styles/Blog/index.module.css'
 
 
 const initialState = {
@@ -43,7 +45,15 @@ class Blog extends Component {
       <div>
         <EntryDisplay entryType={entryType} setEntryType={this.setEntryType} />
         <EntryModal entryType={entryType} setEntryType={this.setEntryType} setAdmin={this.setAdmin} />
-        <BlogDisplay isAdmin={isAdmin} {...posts} />
+        {posts.map(post => (
+          <article className={styles.post} key={post.id}>
+            <Link href={`/blog/${post.slug}`}>
+              <a><h3>{post.title}</h3></a>
+            </Link>
+            <h6>{post.updated_at}</h6>
+            <p>{post.content}</p>
+          </article>
+        ))}
       </div>
     )
   }
