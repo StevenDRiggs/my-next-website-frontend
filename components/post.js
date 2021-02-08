@@ -1,8 +1,10 @@
 const Post = props => {
+  const { title, content } = this.props
     return (
-        <div>
-            <p>Post</p>
-        </div>
+      <article className={styles.post}>
+        <h2>{title}</h2>
+        <p>{content}</p>
+      </article>
     )
 }
 

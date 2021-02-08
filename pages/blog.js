@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
 
 import EntryDisplay from '../components/entry_display'
 import EntryModal from '../components/entry_modal'
@@ -25,8 +24,18 @@ class Blog extends Component {
   getInitialProps = async ({ req }) => {
     const data = parseCookies(req)
 
+    const posts = await fetch(`${BACKEND_DOMAIN}/posts`, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const postsJSON = await posts.json()
+
     return {
-      data: data
+      data: data,
+      posts: Array.from(postsJSON)
     }
   }
 
@@ -43,14 +52,14 @@ class Blog extends Component {
   }
 
   render() {
-    const { data } = this.props
+    const { data, posts } = this.props
     const { isAdmin, entryType, view } = this.state
 
     return (
       <div>
         <EntryDisplay entryType={entryType} setEntryType={this.setEntryType} />
         <EntryModal entryType={entryType} setEntryType={this.setEntryType} data={data} setAdmin={this.setAdmin} />
-        <BlogDisplay isAdmin={isAdmin} />
+        <BlogDisplay isAdmin={isAdmin} posts={posts} />
       </div>
     )
   }

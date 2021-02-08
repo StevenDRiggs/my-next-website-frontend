@@ -7,54 +7,47 @@ import styles from '../styles/BlogDisplay.module.css'
 
 
 const initialState = {
-    view: 'index',
+  view: 'index',
 }
 
 
 class BlogDisplay extends Component {
-    state = {
-        ...initialState,
+  state = {
+    ...initialState,
+  }
+
+  setView = view => {
+    this.setState({
+      view: view,
+    })
+  }
+
+  getServerSideProps = async () => {
+  }
+
+  render() {
+    const { view } = this.state
+    const { posts } = this.props
+    let jsx
+
+    switch (view) {
+      case 'index':
+        jsx = 'Blog Display'
+        //jsx = posts.map(post => <Post key={post.id} title={post.title} content={post.content} />)
+      default:
+        null
     }
 
-    setView = view => {
-      this.setState({
-        view: view,
-      })
-    }
+    console.log(jsx)
 
-    fetchAllPosts = async () => {
-        const posts = await fetch(`${BACKEND_DOMAIN}/posts`, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        const postsJSON = await posts.json()
-
-        return postsJSON
-    }
-
-    render() {
-        const { view } = this.state
-
-        let jsx
-        switch (view) {
-            case 'index':
-                jsx = JSON.stringify(this.fetchAllPosts())
-                //     <Post key={post.id} title={post.title} content={post.content} />
-                // })
-            default:
-                null
-        }
-
-        return (
-            <div className={styles.blogDisplay}>
-                {jsx}
-            </div>
-        )
-    }
+    return (
+      <div className={styles.blogDisplay}>
+        {jsx}
+      </div>
+    )
+  }
 }
+
 
 
 export default BlogDisplay
