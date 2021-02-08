@@ -5,10 +5,12 @@ import EntryModal from '../components/entry_modal'
 import BlogDisplay from '../components/blog_display'
 import parseCookies from '../helpers/parse_cookies'
 
+import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
+
 
 const initialState = {
   isAdmin: false,
-  entryType: 'login',
+  entryType: 'signup',
 }
 
 
@@ -18,24 +20,6 @@ class Blog extends Component {
 
     this.state = {
       ...initialState,
-    }
-  }
-
-  getInitialProps = async ({ req }) => {
-    const data = parseCookies(req)
-
-    const posts = await fetch(`${BACKEND_DOMAIN}/posts`, {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const postsJSON = await posts.json()
-
-    return {
-      data: data,
-      posts: Array.from(postsJSON)
     }
   }
 
@@ -52,17 +36,39 @@ class Blog extends Component {
   }
 
   render() {
-    const { data, posts } = this.props
-    const { isAdmin, entryType, view } = this.state
+    const { isAdmin, entryType } = this.state
+    const { posts } = this.props
 
     return (
       <div>
         <EntryDisplay entryType={entryType} setEntryType={this.setEntryType} />
-        <EntryModal entryType={entryType} setEntryType={this.setEntryType} data={data} setAdmin={this.setAdmin} />
-        <BlogDisplay isAdmin={isAdmin} posts={posts} />
+        <EntryModal entryType={entryType} setEntryType={this.setEntryType} setAdmin={this.setAdmin} />
+        <BlogDisplay isAdmin={isAdmin} {...posts} />
       </div>
     )
   }
 }
 
 export default Blog
+
+
+export const getServerSideProps = async ({ req }) => {
+  const cookieData = parseCookies(req)
+
+  const posts = await fetch(`${BACKEND_DOMAIN}/posts`, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const postsJSON = await posts.json()
+
+  return {
+    props: {
+      cookieData,
+      posts: Array.from(postsJSON)
+    }
+  }
+}
+

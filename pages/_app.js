@@ -5,6 +5,8 @@ import { CookiesProvider } from 'react-cookie'
 import Navbar from '../components/navbar'
 import Logo from '../images/logoReact.svg'
 
+import Blog from './blog'
+
 import '../styles/globals.css'
 
 
