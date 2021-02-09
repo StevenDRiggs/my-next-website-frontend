@@ -45,15 +45,17 @@ class Blog extends Component {
       <div>
         <EntryDisplay entryType={entryType} setEntryType={this.setEntryType} />
         <EntryModal entryType={entryType} setEntryType={this.setEntryType} setAdmin={this.setAdmin} />
-        {posts.map(post => (
-          <article className={styles.post} key={post.id}>
-            <Link href={`/blog/${post.slug}`}>
-              <a><h3>{post.title}</h3></a>
-            </Link>
-            <h6>{post.updated_at}</h6>
-            <p>{post.content}</p>
-          </article>
-        ))}
+        <div className={styles.postsContainer}>
+          {posts.map(post => (
+            <article className={styles.post} key={post.id}>
+              <Link href={`/blog/${post.slug}`}>
+                <a><h3>{post.title}</h3></a>
+              </Link>
+              <h6>{post.updated_at}</h6>
+              <p>{post.content}</p>
+            </article>
+          ))}
+        </div>
       </div>
     )
   }
