@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
 
-import EntryDisplay from '../../components/entry_display'
-import EntryModal from '../../components/entry_modal'
+// import EntryDisplay from '../../components/entry_display'
+// import EntryModal from '../../components/entry_modal'
+import Sidebar from '../../components/sidebar'
 import parseCookies from '../../helpers/parse_cookies'
 
 import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
@@ -11,8 +12,7 @@ import styles from '../../styles/Blog/index.module.css'
 
 
 const initialState = {
-  isAdmin: false,
-  entryType: 'signup',
+  user: false,
 }
 
 
@@ -25,26 +25,20 @@ class Blog extends Component {
     }
   }
 
-  setAdmin = admin => {
+  setUser = user => {
     this.setState({
-      isAdmin: admin,
-    })
-  }
-
-  setEntryType = entryType => {
-    this.setState({
-      entryType: entryType,
+      user
     })
   }
 
   render() {
-    const { isAdmin, entryType } = this.state
+    const { user } = this.state
     const { posts } = this.props
 
     return (
       <div>
-        <EntryDisplay entryType={entryType} setEntryType={this.setEntryType} />
-        <EntryModal entryType={entryType} setEntryType={this.setEntryType} setAdmin={this.setAdmin} />
+        <Sidebar props={{user: user, setUser: this.setUser}} />
+
         <div className={styles.postsContainer}>
           {posts.map(post => (
             <article className={styles.post} key={post.id}>
