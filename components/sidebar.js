@@ -24,6 +24,8 @@ class Sidebar extends Component {
         const loginForm = document.querySelector('#loginForm')
 
         loginForm.style.display = 'block'
+
+        loginForm.querySelector('input').focus()
     }
 
     hideLoginForm = () => {

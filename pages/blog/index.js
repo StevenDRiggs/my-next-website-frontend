@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
 
-// import EntryDisplay from '../../components/entry_display'
-// import EntryModal from '../../components/entry_modal'
 import Sidebar from '../../components/sidebar'
 import parseCookies from '../../helpers/parse_cookies'
 
@@ -31,13 +29,27 @@ class Blog extends Component {
     })
   }
 
+  editPostBtn = () => {
+    console.log('Edit Post Button')
+  }
+
+  deletePostBtn = () => {
+    console.log('Delete Post Button')
+  }
+
   render() {
     const { user } = this.state
-    const { posts } = this.props
+    const { posts, cookieData } = this.props
 
     return (
       <div>
-        <Sidebar props={{user: user, setUser: this.setUser}} />
+        <Sidebar props={{
+          user,
+          cookieData,
+          setUser: this.setUser
+        }} />
+
+        {user && user.is_admin ? <Link href='/blog/newPost'><a><button>New Post</button></a></Link> : null}
 
         <div className={styles.postsContainer}>
           {posts.map(post => (
@@ -46,6 +58,8 @@ class Blog extends Component {
                 <a><h3>{post.title}</h3></a>
               </Link>
               <h6>{post.updated_at}</h6>
+              {user && user.is_admin ? <button onClick={this.editPostBtn}>Edit Post</button> : null}
+              {user && user.is_admin ? <button onClick={this.deletePostBtn}>Delete Post</button> : null}
               <p>{post.content}</p>
             </article>
           ))}

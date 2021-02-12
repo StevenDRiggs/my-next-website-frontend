@@ -7,3 +7,11 @@
 .post {
     margin: 15px;
 }
+
+.post a {
+    text-decoration: underline;
+}
+
+.post a:hover {
+    color: blue;
+}
