@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { CookiesProvider } from 'react-cookie'
 
+import { storeWrapper } from '../redux/store/store'
 import Navbar from '../components/navbar'
 import Logo from '../images/logoReact.svg'
 
@@ -32,4 +33,4 @@ const App = ({ Component, pageProps }) => {
 }
 
 
-export default App
+export default storeWrapper.withRedux(App)
