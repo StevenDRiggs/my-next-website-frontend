@@ -5,12 +5,12 @@ const usersReducer = (state={}, action) => {
   switch (action.type) {
     case HYDRATE:
       return {...state, ...action.payload.user}
-    case 'LOGIN':
+    case 'LOGIN_USER':
       return {
         user: action.user,
         token: action.token,
       }
-    case 'LOGOUT':
+    case 'LOGOUT_USER':
       return {}
     default:
       return state

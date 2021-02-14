@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
+import { Provider, connect } from 'react-redux'
 
 import { storeWrapper } from '../../redux/store/store'
 import { fetchAllPosts } from '../../redux/actions/postActions'
-import { Provider, connect } from 'react-redux'
 import Sidebar from '../../components/sidebar'
 
 import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
@@ -42,7 +42,7 @@ class Blog extends Component {
                   <p>{post.content}</p>
                 </article>
               ))
-              : <p>posts is empty</p>
+              : <p>Loading Posts...</p>
           }
         </div>
       </>

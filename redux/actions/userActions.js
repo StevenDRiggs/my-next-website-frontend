@@ -1,15 +1,15 @@
 import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
 
 
-export const loginUser = loginFormInfo => {
+export const loginUser = loginFormData => {
   return dispatch => {
-    fetch(`${BACKEND_DOMAIN}/login`, {
+    const userAction = fetch(`${BACKEND_DOMAIN}/login`, {
       method: 'POST',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(loginFormInfo)
+      body: JSON.stringify(loginFormData)
     })
     .then(response => response.json())
     .then(data => dispatch({
@@ -17,6 +17,24 @@ export const loginUser = loginFormInfo => {
       user: data.user,
       token: data.token,
     }))
+    
+    return userAction
   }
 }
 
+export const logoutUser = () => {
+  return dispatch => {
+    fetch(`${BACKEND_DOMAIN}/logout`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return {
+      type: 'LOGOUT_USER',
+      action: '',
+    }
+  }
+}
