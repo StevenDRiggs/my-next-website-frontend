@@ -1,75 +1,69 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { signupUser } from '../redux/actions/userActions'
+
 import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
 
 
 const initialState = {
+  user: {
     username: '',
     email: '',
     password: ''
+  }
 }
 
 
 class SignupForm extends Component {
-    state = {
-        ...initialState,
-    }
+  state = {
+    ...initialState,
+  }
 
-    handleChange = event => {
-        this.setState({
-            [event.target.name]: event.target.value,
-        })
-    }
+  handleChange = event => {
+    this.setState({
+      user: {
+        ...this.state.user,
+        [event.target.name]: event.target.value,
+      }
+    })
+  }
 
-    handleSubmit = async event => {
-        event.preventDefault()
+  handleSubmit = event => {
+    event.preventDefault()
 
-        const { setUser, setCookie, hideSignupForm } = this.props
+    const { hideSignupForm, signupUser } = this.props
 
-        hideSignupForm()
+    hideSignupForm()
 
-        const response = await fetch(`${BACKEND_DOMAIN}/signup`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: this.state
-            })
-        })
-        
-        const data = await response.json()
+    signupUser(this.state)
 
-        setCookie('sessionInfo', JSON.stringify({
-            token: data.token
-        }), {
-            path: '/blog/',
-            maxAge: 7200,
-            sameSite: true,
-            secure: true
-        })
+    this.setState({
+      ...initialState,
+    })
+  }
 
-        setUser(data.user)
+  render() {
+    const { user } = this.state
+    const { username, email, password } = user
+    const { styles } = this.props
 
-        this.setState({
-            ...initialState,
-        })
-    }
+    return (
+      <form id='signupForm' className={styles.form} onSubmit={this.handleSubmit} >
+        <input type='text' name='username' value={username} onChange={this.handleChange} placeholder='Username' required />
+        <input type='email' name='email' value={email} onChange={this.handleChange} placeholder='Email' required />
+        <input type='password' name='password' value={password} onChange={this.handleChange} placeholder='Password' required />
 
-    render() {
-        const { username, email, password } = this.state
-        const { styles } = this.props
-
-        return (
-            <form id='signupForm' className={styles.form} onSubmit={this.handleSubmit} >
-                <input type='text' name='username' value={username} onChange={this.handleChange} placeholder='Username' required />
-                <input type='email' name='email' value={email} onChange={this.handleChange} placeholder='Email' required />
-                <input type='password' name='password' value={password} onChange={this.handleChange} placeholder='Password' required />
-
-                <button type='submit'>Sign Up</button>
-            </form>
-        )
-    }
+        <button type='submit'>Sign Up</button>
+      </form>
+    )
+  }
 }
 
 
-export default SignupForm
+const mapDispatchToProps = dispatch => {
+  return {
+    signupUser: signupFormData => dispatch(signupUser(signupFormData)),
+  }
+}
+export default connect(null, mapDispatchToProps)(SignupForm)

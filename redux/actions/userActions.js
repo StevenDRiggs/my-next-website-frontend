@@ -37,3 +37,25 @@ export const logoutUser = () => {
     })
   }
 }
+
+export const signupUser = signupFormData => {
+  return dispatch => {
+    const userAction = fetch(`${BACKEND_DOMAIN}/signup`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(signupFormData)
+    })
+    .then(response => response.json())
+    .then(data => dispatch({
+      type: 'SIGNUP_USER',
+      user: data.user,
+      token: data.token,
+    }))
+
+    return userAction
+  }
+}
+

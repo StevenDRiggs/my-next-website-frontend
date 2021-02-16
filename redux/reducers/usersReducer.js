@@ -12,6 +12,11 @@ const usersReducer = (state={}, action) => {
       }
     case 'LOGOUT_USER':
       return null
+    case 'SIGNUP_USER':
+      return {
+        user: action.user,
+        token: action.token,
+      }
     default:
       return state
   }
