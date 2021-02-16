@@ -33,8 +33,6 @@ class LoginForm extends Component {
 
     const { hideLoginForm, loginUser } = this.props
 
-    debugger
-
     hideLoginForm()
 
     loginUser(this.state)

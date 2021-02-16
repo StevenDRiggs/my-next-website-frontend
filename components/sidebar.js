@@ -63,12 +63,12 @@ class Sidebar extends Component {
 
   render() {
     let { user } = this.props
-    user = user.user
+    user = user ? user.user : user
 
     return (
       <div className={styles.sidebar}>
         {user && user.avatar_url ? <Image className={styles.avatar} src={user.avatar_url} alt={`${user.username} avatar`} width={100} height={100} /> : null}
-        {user ? <h3>{user.username}</h3> : null}
+        {user && user.username ? <h3>{user.username}</h3> : null}
         {user && Object.keys(user).length > 0
           ? <button className={styles.button} onClick={this.logoutBtn}>Log Out</button>
           : <>

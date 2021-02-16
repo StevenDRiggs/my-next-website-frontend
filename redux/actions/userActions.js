@@ -17,7 +17,7 @@ export const loginUser = loginFormData => {
       user: data.user,
       token: data.token,
     }))
-    
+
     return userAction
   }
 }
@@ -32,9 +32,8 @@ export const logoutUser = () => {
       },
     })
 
-    return {
+    return dispatch({
       type: 'LOGOUT_USER',
-      action: '',
-    }
+    })
   }
 }
