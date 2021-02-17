@@ -14,6 +14,9 @@ html {
   background-color: rgba(84, 88, 127, 0.3);
 }
 
+a {
+  cursor: pointer;
+}
 
 .chrysalis-logo {
   width: 10%;

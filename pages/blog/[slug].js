@@ -1,4 +1,8 @@
 import Link from 'next/link'
+import { connect } from 'react-redux'
+
+import { store, storeWrapper } from '../../redux/store/store'
+import { fetchAllPosts } from '../../redux/actions/postActions'
 
 import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
 
@@ -6,9 +10,8 @@ import styles from '../../styles/Blog/Post.module.css'
 
 
 const Post = props => {
-
   const { post } = props
-  if (post.not_found) {
+  if (!post || post.not_found) {
     return (
       <article className={styles.post}>
         <Link href='/contact'>
@@ -33,44 +36,47 @@ export default Post
 
 
 export const getStaticPaths = async () => {
-  const response = await fetch(`${BACKEND_DOMAIN}/posts`, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-
-  const posts = await response.json()
+  let posts = store.getState().posts
+  if (posts.length < 1) {
+    const postAction = await store.dispatch(fetchAllPosts())
+    posts = postAction.payload.posts
+  }
 
   const paths = posts.map(post => (
     {
       params: {
-        slug: `${post.slug}`
-      }
+        slug: post.slug,
+      },
     }
   ))
 
   return {
     paths,
-    fallback: false
+    fallback: true,
   }
 }
 
-export const getStaticProps = async ({ params }) => {
-  const response = await fetch(`${BACKEND_DOMAIN}/posts/${params.slug}`, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json'
+export const getStaticProps = storeWrapper.getStaticProps(
+  async ({ store, params }) => {
+    let post
+    if (store.getState().posts && store.getState().posts.length > 1) {
+      post = store.getState().posts.filter(post_ => post_.slug === params.slug)[0]
+    } else {
+      const response = await fetch(`${BACKEND_DOMAIN}/posts/${params.slug}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      post = await response.json()
     }
-  })
 
-  const post = await response.json()
-
-  return {
-    props: {
-      post
+    return {
+      props: {
+        post
+      }
     }
   }
-}
+)

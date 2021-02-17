@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
-import { Provider, connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 import { storeWrapper } from '../../redux/store/store'
 import { fetchAllPosts } from '../../redux/actions/postActions'
