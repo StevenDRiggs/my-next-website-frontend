@@ -15,3 +15,12 @@
 .post a:hover {
     color: blue;
 }
+
+.editPostForm {
+  display: none;
+  position: fixed;
+  flex-direction: column;
+  top: 45vh;
+  margin: auto;
+  background-color: white;
+}

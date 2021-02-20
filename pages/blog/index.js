@@ -3,8 +3,9 @@ import Link from 'next/link'
 import { connect } from 'react-redux'
 
 import { storeWrapper } from '../../redux/store/store'
-import { fetchAllPosts } from '../../redux/actions/postActions'
+import { fetchAllPosts } from '../../redux/actions/postActions' //, deletePost } from '../../redux/actions/postActions'
 import Sidebar from '../../components/sidebar'
+import EditPostForm from '../../components/edit_post_form'
 
 import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
 
@@ -12,8 +13,18 @@ import styles from '../../styles/Blog/index.module.css'
 
 
 class Blog extends Component {
-  editPostBtn = () => {
-    console.log('Edit Post Button')
+  state = {
+    post: null,
+  }
+
+  editPostBtn = post => {
+    const editPostForm = document.querySelector('#editPostForm')
+    const editPostFormTitle = editPostForm.querySelector('#editPostFormTitle')
+    const editPostFormContent = editPostForm.querySelector('#editPostFormContent')
+
+    editPostFormTitle.value = post.title
+    editPostFormContent.value = post.content
+    editPostForm.style.display = 'flex'
   }
 
   deletePostBtn = () => {
@@ -21,13 +32,18 @@ class Blog extends Component {
   }
 
   render() {
-    const { user, posts } = this.props
+    const { post } = this.state
+    const { posts } = this.props
+    let { user } = this.props
+    user = user ? user.user : null
 
     return (
       <>
         <Sidebar />
 
         {user && user.is_admin ? <Link href='/blog/newPost'><a><button>New Post</button></a></Link> : null}
+
+        <EditPostForm styles={styles} />
 
         <div className={styles.postsContainer}>
           {posts.length > 0 ?
@@ -37,7 +53,7 @@ class Blog extends Component {
                     <a><h3>{post.title}</h3></a>
                   </Link>
                   <h6>{post.updated_at}</h6>
-                  {user && user.is_admin ? <button onClick={this.editPostBtn}>Edit Post</button> : null}
+                  {user && user.is_admin ? <button onClick={() => this.editPostBtn(post)}>Edit Post</button> : null}
                   {user && user.is_admin ? <button onClick={this.deletePostBtn}>Delete Post</button> : null}
                   <p>{post.content}</p>
                 </article>
@@ -55,6 +71,13 @@ const mapStateToProps = state => {
   return {
     user: state.user,
     posts: state.posts,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updatePost: slug => dispatch(updatePost(slug)),
+    //deletePost: slug => dispatch(deletePost(slug)),
   }
 }
 

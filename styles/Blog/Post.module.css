@@ -1,8 +1,7 @@
 .post a {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .post a:hover {
-    color: blue;
+  color: blue;
 }
-
