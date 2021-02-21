@@ -18,13 +18,9 @@ class Blog extends Component {
   }
 
   editPostBtn = post => {
-    const editPostForm = document.querySelector('#editPostForm')
-    const editPostFormTitle = editPostForm.querySelector('#editPostFormTitle')
-    const editPostFormContent = editPostForm.querySelector('#editPostFormContent')
-
-    editPostFormTitle.value = post.title
-    editPostFormContent.value = post.content
-    editPostForm.style.display = 'flex'
+    this.setState({
+      post,
+    })
   }
 
   deletePostBtn = () => {
@@ -43,7 +39,7 @@ class Blog extends Component {
 
         {user && user.is_admin ? <Link href='/blog/newPost'><a><button>New Post</button></a></Link> : null}
 
-        <EditPostForm styles={styles} />
+        { post && post !== null ? <EditPostForm post={post} styles={styles} /> : null}
 
         <div className={styles.postsContainer}>
           {posts.length > 0 ?
@@ -71,13 +67,6 @@ const mapStateToProps = state => {
   return {
     user: state.user,
     posts: state.posts,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    updatePost: slug => dispatch(updatePost(slug)),
-    //deletePost: slug => dispatch(deletePost(slug)),
   }
 }
 

@@ -17,7 +17,7 @@
 }
 
 .editPostForm {
-  display: none;
+  display: flex;
   position: fixed;
   flex-direction: column;
   top: 45vh;

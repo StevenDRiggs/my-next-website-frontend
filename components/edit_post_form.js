@@ -7,7 +7,7 @@ import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
 
 
 class EditPostForm extends Component {
-  constructor = props => {
+  constructor(props) {
     super(props)
 
     const { title, content, slug } = props
@@ -57,9 +57,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updatePost: (slug, editFormInfo) => dispatch(slug, editFormInfo),
+    updatePost: ({ slug, ...editFormInfo }) => dispatch(slug, editFormInfo),
   }
 }
 
 
-export default connect(mapStateToProps)(EditPostForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditPostForm)
