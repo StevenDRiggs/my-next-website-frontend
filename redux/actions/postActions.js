@@ -23,7 +23,7 @@ export const fetchAllPosts = () => {
   }
 }
 
-export const updatePost = (slug, editFormInfo) => {
+export const updatePost = (slug, ...editFormInfo) => {
   return dispatch => {
     const { user } = store.getState()
 
@@ -31,7 +31,7 @@ export const updatePost = (slug, editFormInfo) => {
       const token = user.token
       
       const postAction = fetch(`${BACKEND_DOMAIN}/posts/${slug}`, {
-        method: 'POST',
+        method: 'PATCH',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',

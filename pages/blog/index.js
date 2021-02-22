@@ -17,6 +17,12 @@ class Blog extends Component {
     post: null,
   }
 
+  clearPost = () => {
+    this.setState({
+      post: null,
+    })
+  }
+
   editPostBtn = post => {
     this.setState({
       post,
@@ -39,7 +45,7 @@ class Blog extends Component {
 
         {user && user.is_admin ? <Link href='/blog/newPost'><a><button>New Post</button></a></Link> : null}
 
-        { post && post !== null ? <EditPostForm post={post} styles={styles} /> : null}
+        { post && post !== null ? <EditPostForm post={post} clearPost={this.clearPost} styles={styles} /> : null}
 
         <div className={styles.postsContainer}>
           {posts.length > 0 ?

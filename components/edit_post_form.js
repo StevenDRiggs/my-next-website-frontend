@@ -10,7 +10,7 @@ class EditPostForm extends Component {
   constructor(props) {
     super(props)
 
-    const { title, content, slug } = props
+    const { title, content, slug } = props.post
 
     this.state = {
       title,
@@ -28,9 +28,11 @@ class EditPostForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    const { updatePost } = this.props
+    const { updatePost, clearPost } = this.props
 
     updatePost(this.state)
+
+    clearPost()
   }
 
   render() {
@@ -48,18 +50,11 @@ class EditPostForm extends Component {
 }
 
 
-const mapStateToProps = state => {
-  return {
-    posts: state.posts,
-    token: state.user.token,
-  }
-}
-
 const mapDispatchToProps = dispatch => {
   return {
-    updatePost: ({ slug, ...editFormInfo }) => dispatch(slug, editFormInfo),
+    updatePost: ({ slug, ...editFormInfo }) => dispatch(updatePost(slug, editFormInfo)),
   }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditPostForm)
+export default connect(null, mapDispatchToProps)(EditPostForm)
