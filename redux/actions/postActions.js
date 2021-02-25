@@ -23,7 +23,8 @@ export const fetchAllPosts = () => {
   }
 }
 
-export const updatePost = (slug, ...editFormInfo) => {
+export const updatePost = (slug, editFormInfo) => {
+  debugger
   return dispatch => {
     const { user } = store.getState()
 
@@ -38,8 +39,10 @@ export const updatePost = (slug, ...editFormInfo) => {
         },
         body: JSON.stringify({
           token,
-          slug,
-          ...editFormInfo,
+          post: {
+            slug,
+            ...editFormInfo,
+          },
         }),
       })
         .then(response => response.json())
