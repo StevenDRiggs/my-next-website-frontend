@@ -37,6 +37,13 @@ a {
     width: 40%;
 }
 
+.errors {
+  position: fixed;
+  top: 15vh;
+  color: red;
+  text-align: center;
+}
+
 @media screen and (600px < width < 1000px) {
   .main-display {
     margin: 0.5em auto;

@@ -35,13 +35,21 @@ class Blog extends Component {
 
   render() {
     const { post } = this.state
-    const { posts } = this.props
+    const { posts, errors } = this.props
     let { user } = this.props
     user = user ? user.user : null
 
     return (
       <>
         <Sidebar />
+
+        {errors && errors.length > 0 ?
+          <div className='errors'>
+            <ul>
+              {errors.map((error, index) => <li key={index}>{error}</li>)}
+            </ul>
+          </div> :
+            null}
 
         {user && user.is_admin ? <Link href='/blog/newPost'><a><button>New Post</button></a></Link> : null}
 
@@ -69,10 +77,11 @@ class Blog extends Component {
 }
 
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ user, posts, errors }) => {
   return {
-    user: state.user,
-    posts: state.posts,
+    user,
+    posts,
+    errors,
   }
 }
 

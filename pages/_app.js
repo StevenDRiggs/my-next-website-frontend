@@ -23,7 +23,7 @@ const App = ({ Component, pageProps }) => {
           <Logo className='chrysalis-logo' />
         </a>
       </Link>
-      
+
       <div className='main-display'>
         <Component {...pageProps} />
       </div>

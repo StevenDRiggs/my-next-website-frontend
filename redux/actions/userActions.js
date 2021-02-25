@@ -11,12 +11,23 @@ export const loginUser = loginFormData => {
       },
       body: JSON.stringify(loginFormData)
     })
-    .then(response => response.json())
-    .then(data => dispatch({
-      type: 'LOGIN_USER',
-      user: data.user,
-      token: data.token,
-    }))
+      .then(response => response.json())
+      .then(({ user, token }) => {
+        if (user.errors) {
+          dispatch({
+            type: 'PROCESS_ERRORS',
+            payload: {
+              errors: user.errors,
+            },
+          })
+        } else {
+          dispatch({
+            type: 'LOGIN_USER',
+            user,
+            token,
+          })
+        }
+      })
 
     return userAction
   }
@@ -48,12 +59,23 @@ export const signupUser = signupFormData => {
       },
       body: JSON.stringify(signupFormData)
     })
-    .then(response => response.json())
-    .then(data => dispatch({
-      type: 'SIGNUP_USER',
-      user: data.user,
-      token: data.token,
-    }))
+      .then(response => response.json())
+      .then(({user, token }) => {
+        if (user.errors) {
+          dispatch({
+            type: 'PROCESS_ERRORS',
+            payload: {
+              errors: user.errors,
+            },
+          })
+        } else {
+          dispatch({
+            type: 'SIGNUP_USER',
+            user,
+            token,
+          })
+        }
+      })
 
     return userAction
   }

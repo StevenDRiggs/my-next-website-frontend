@@ -12,33 +12,43 @@ export const fetchAllPosts = () => {
         'Content-Type': 'application/json',
       }})
       .then(response => response.json())
-      .then(posts => dispatch({
-        type: 'FETCH_ALL_POSTS',
-        payload: {
-          posts,
-        },
-      }))
+      .then(posts => {
+        if (posts.errors) {
+          dispatch({
+            type: 'PROCESS_ERRORS',
+            payload: {
+              errors: posts.errors,
+            },
+          })
+        } else {
+          dispatch({
+            type: 'FETCH_ALL_POSTS',
+            payload: {
+              posts,
+            },
+          })
+        }
+      })
 
     return postsAction
   }
 }
 
 export const updatePost = (slug, editFormInfo) => {
-  debugger
   return dispatch => {
     const { user } = store.getState()
 
     if (user && user.user.is_admin) {
       const token = user.token
-      
+
       const postAction = fetch(`${BACKEND_DOMAIN}/posts/${slug}`, {
         method: 'PATCH',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
-          token,
           post: {
             slug,
             ...editFormInfo,
@@ -46,12 +56,23 @@ export const updatePost = (slug, editFormInfo) => {
         }),
       })
         .then(response => response.json())
-        .then(post => dispatch({
-          type: 'UPDATE_POST',
-          payload: {
-            post,
-          },
-        }))
+        .then(post => {
+          if (post.errors) {
+            dispatch({
+              type: 'PROCESS_ERRORS',
+              payload: {
+                errors: post.errors,
+              },
+            })
+          } else {
+            dispatch({
+              type: 'UPDATE_POST',
+              payload: {
+                post,
+              },
+            })
+          }
+        })
 
       return postAction
     } else {
