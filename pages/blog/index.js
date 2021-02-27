@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { connect } from 'react-redux'
 
 import { storeWrapper } from '../../redux/store/store'
-import { fetchAllPosts } from '../../redux/actions/postActions' //, deletePost } from '../../redux/actions/postActions'
+import { fetchAllPosts, deletePost } from '../../redux/actions/postActions'
 import Sidebar from '../../components/sidebar'
 import EditPostForm from '../../components/edit_post_form'
 
@@ -29,8 +29,14 @@ class Blog extends Component {
     })
   }
 
-  deletePostBtn = () => {
-    console.log('Delete Post Button')
+  deletePostBtn = post => {
+    const { deletePost } = this.props
+
+    const confirmDelete = confirm(`Are you sure you want to delete post ${post.title} ?`)
+
+    deletePost(post.slug, confirmDelete)
+
+    this.clearPost()
   }
 
   render() {
@@ -64,7 +70,7 @@ class Blog extends Component {
                   </Link>
                   <h6>{post.updated_at}</h6>
                   {user && user.is_admin ? <button onClick={() => this.editPostBtn(post)}>Edit Post</button> : null}
-                  {user && user.is_admin ? <button onClick={this.deletePostBtn}>Delete Post</button> : null}
+                  {user && user.is_admin ? <button onClick={() => this.deletePostBtn(post)}>Delete Post</button> : null}
                   <p>{post.content}</p>
                 </article>
               ))
@@ -85,8 +91,14 @@ const mapStateToProps = ({ user, posts, errors }) => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    deletePost: (slug, confirmDelete) => dispatch(deletePost(slug, confirmDelete)),
+  }
+}
 
-export default connect(mapStateToProps)(Blog)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Blog)
 
 
 export const getServerSideProps = storeWrapper.getServerSideProps(

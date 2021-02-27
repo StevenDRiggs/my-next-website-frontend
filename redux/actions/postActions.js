@@ -81,3 +81,50 @@ export const updatePost = (slug, editFormInfo) => {
   }
 }
 
+export const deletePost = (slug, confirmDelete) => {
+  return dispatch => {
+    const { user } = store.getState()
+
+    if (user && user.user.is_admin) {
+      const token = user.token
+
+      const postAction = confirmDelete ?
+        fetch(`${BACKEND_DOMAIN}/posts/${slug}`, {
+          method: 'DELETE',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            post: {
+              slug,
+            },
+          }),
+        })
+        .then(response => response.json())
+        .then(posts => {
+          if (posts.errors) {
+            dispatch({
+              type: 'PROCESS_ERRORS',
+              payload: {
+                errors: posts.errors,
+              },
+            })
+          } else {
+            dispatch({
+              type: 'DELETE_POST',
+              payload: {
+                posts,
+              },
+            })
+          }
+        }) :
+        null
+
+      return postAction
+    } else {
+      return null
+    }
+  }
+}
