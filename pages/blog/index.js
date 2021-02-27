@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { storeWrapper } from '../../redux/store/store'
 import { fetchAllPosts, deletePost } from '../../redux/actions/postActions'
 import Sidebar from '../../components/sidebar'
+import NewPostForm from '../../components/new_post_form'
 import EditPostForm from '../../components/edit_post_form'
 
 import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
@@ -14,12 +15,25 @@ import styles from '../../styles/Blog/index.module.css'
 
 class Blog extends Component {
   state = {
+    newPost: false,
     post: null,
   }
 
   clearPost = () => {
     this.setState({
       post: null,
+    })
+  }
+
+  toggleNewPostForm = () => {
+    this.setState({
+      newPost: !this.state.newPost,
+    })
+  }
+
+  newPostBtn = () => {
+    this.setState({
+      newPost: true,
     })
   }
 
@@ -40,7 +54,7 @@ class Blog extends Component {
   }
 
   render() {
-    const { post } = this.state
+    const { post, newPost } = this.state
     const { posts, errors } = this.props
     let { user } = this.props
     user = user ? user.user : null
@@ -57,9 +71,10 @@ class Blog extends Component {
           </div> :
             null}
 
-        {user && user.is_admin ? <Link href='/blog/newPost'><a><button>New Post</button></a></Link> : null}
+        {user && user.is_admin ? <button onClick={this.newPostBtn}>New Post</button> : null}
+        {newPost ? <NewPostForm toggleNewPostForm={this.toggleNewPostForm} /> : null}
 
-        { post && post !== null ? <EditPostForm post={post} clearPost={this.clearPost} styles={styles} /> : null}
+        {post && post !== null ? <EditPostForm post={post} clearPost={this.clearPost} styles={styles} /> : null}
 
         <div className={styles.postsContainer}>
           {posts.length > 0 ?

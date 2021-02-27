@@ -7,6 +7,8 @@ const postsReducer = (state=[], action) => {
       return action.payload.posts
     case 'FETCH_ALL_POSTS':
       return action.payload.posts
+    case 'NEW_POST':
+      return action.payload.posts
     case 'UPDATE_POST':
       return action.payload.posts
     case 'DELETE_POST':
