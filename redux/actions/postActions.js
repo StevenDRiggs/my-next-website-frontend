@@ -56,19 +56,19 @@ export const updatePost = (slug, editFormInfo) => {
         }),
       })
         .then(response => response.json())
-        .then(post => {
-          if (post.errors) {
+        .then(posts => {
+          if (posts.errors) {
             dispatch({
               type: 'PROCESS_ERRORS',
               payload: {
-                errors: post.errors,
+                errors: posts.errors,
               },
             })
           } else {
             dispatch({
               type: 'UPDATE_POST',
               payload: {
-                post,
+                posts,
               },
             })
           }
