@@ -18,7 +18,7 @@ export default NewPost
 export const getServerSideProps = async ({ req }) => {
   const cookieData = parseCookies(req)
 
-  const response = await fetch(`${BACKEND_DOMAIN}/verifylogin`, {
+  const response = await fetch(`/verifylogin`, {
     method: 'POST',
     mode: 'cors',
     headers: {

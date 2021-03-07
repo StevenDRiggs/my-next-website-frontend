@@ -62,7 +62,7 @@ export const getStaticProps = storeWrapper.getStaticProps(
     if (store.getState().posts && store.getState().posts.length > 1) {
       post = store.getState().posts.filter(post_ => post_.slug === params.slug)[0]
     } else {
-      const response = await fetch(`${BACKEND_DOMAIN}/posts/${params.slug}`, {
+      const response = await fetch(`/posts/${params.slug}`, {
         method: 'GET',
         mode: 'cors',
         headers: {

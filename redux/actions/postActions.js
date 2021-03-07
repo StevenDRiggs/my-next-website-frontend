@@ -5,7 +5,7 @@ import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
 
 export const fetchAllPosts = () => {
   return dispatch => {
-    const postsAction = fetch(`${BACKEND_DOMAIN}/posts`, {
+    const postsAction = fetch(`/posts`, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -41,7 +41,7 @@ export const updatePost = (slug, editFormInfo) => {
     if (user && user.user.is_admin) {
       const token = user.token
 
-      const postAction = fetch(`${BACKEND_DOMAIN}/posts/${slug}`, {
+      const postAction = fetch(`/posts/${slug}`, {
         method: 'PATCH',
         mode: 'cors',
         headers: {
@@ -89,7 +89,7 @@ export const deletePost = (slug, confirmDelete) => {
       const token = user.token
 
       const postAction = confirmDelete ?
-        fetch(`${BACKEND_DOMAIN}/posts/${slug}`, {
+        fetch(`/posts/${slug}`, {
           method: 'DELETE',
           mode: 'cors',
           headers: {
@@ -136,7 +136,7 @@ export const newPost = (editFormInfo) => {
     if (user && user.user.is_admin) {
       const token = user.token
 
-      const postAction = fetch(`${BACKEND_DOMAIN}/posts`, {
+      const postAction = fetch(`/posts`, {
         method: 'POST',
         mode: 'cors',
         headers: {

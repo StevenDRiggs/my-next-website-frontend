@@ -52,7 +52,7 @@ class Resume extends Component {
 
     this.closeModal()
     
-    fetch(`${BACKEND_DOMAIN}/resume`, {
+    fetch(`/resume`, {
       method: 'POST',
       mode: 'cors',
       headers: {

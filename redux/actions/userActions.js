@@ -3,7 +3,7 @@ import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
 
 export const loginUser = loginFormData => {
   return dispatch => {
-    const userAction = fetch(`${BACKEND_DOMAIN}/login`, {
+    const userAction = fetch(`/login`, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -35,7 +35,7 @@ export const loginUser = loginFormData => {
 
 export const logoutUser = () => {
   return dispatch => {
-    fetch(`${BACKEND_DOMAIN}/logout`, {
+    fetch(`/logout`, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -51,7 +51,7 @@ export const logoutUser = () => {
 
 export const signupUser = signupFormData => {
   return dispatch => {
-    const userAction = fetch(`${BACKEND_DOMAIN}/signup`, {
+    const userAction = fetch(`/signup`, {
       method: 'POST',
       mode: 'cors',
       headers: {
