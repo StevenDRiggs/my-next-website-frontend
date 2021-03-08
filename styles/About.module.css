@@ -1,0 +1,6 @@
+div .photo {
+  float: left;
+  width: 15%;
+  min-width: 100px;
+  max-width: 150px;
+}
