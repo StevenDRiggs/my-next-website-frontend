@@ -1,9 +1,8 @@
-html,
-body {
+* {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Fugaz One', cursive, Verdana, sans-serif;
+  box-sizing: border-box;
 }
 
 a {
@@ -11,6 +10,53 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+html {
+  background-color: rgba(84, 88, 127, 0.3);
 }
+
+a {
+  cursor: pointer;
+}
+
+.chrysalis-logo {
+  width: 10%;
+  min-width: 50px;
+  max-width: 75px;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.main-display {
+    display: flex;
+    margin: 15% auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
+
+.errors {
+  position: fixed;
+  top: 15vh;
+  color: red;
+  text-align: center;
+}
+
+@media screen and (600px < width < 1000px) {
+  .main-display {
+    margin: 0.5em auto;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main-display {
+    height: 90vh;
+    width: 76%;
+    margin: auto;
+    padding: 0 0.5em 0 4.5em;
+  }
+}
+

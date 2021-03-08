@@ -9,6 +9,7 @@ import '../styles/globals.css'
 
 
 const App = ({ Component, pageProps }) => {
+  console.log('Component:', Component)
   return (
     <>
       <Head>
