@@ -1,0 +1,92 @@
+<svg id="yeti" viewBox="0 0 500 500">
+    <defs>
+        <clipPath id="yeti-mouth-clip-path">
+            <ellipse cx="220" cy="280" rx="30" ry="20" transform="rotate(-35, 220, 280)" />
+        </clipPath>
+        <filter id="yeti-outline-filter">
+            <feTurbulence type="turbulence" baseFrequency="0.05"
+                numOctaves="2" result="turbulence"/>
+            <feDisplacementMap in2="turbulence" in="SourceGraphic"
+                scale="18" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </defs>
+
+
+    <rect x="0" y="0" width="500" height="500" stroke="none" fill="#bbbbb2" />
+
+    <path id="yeti-outline"
+        stroke="black"
+        stroke-width="10"
+        fill="white"
+        filter="url(#yeti-outline-filter)"
+        d="M 150,500 C 200,400 150,350 190,325 S 190,320 180,315 Q 175,310 170,222 L 150,175 L 180,220 L 190,200 L 210,195 L 165,150 L 210,190 L 215,110 Q 215,170 220,190 L 220,190 L 230,180 L 235,190 L 240,180 L 245,190 L 250,180 L 255,190 Q 290,150 290,110 V 200 Q 300,200 280,250 C 260,290 280,380 290,390 S 300,400 300,500"
+    />
+
+    <g id="yeti-eyes">
+        <circle cx="200" cy="240" r="7.5" stroke="none" fill="blue" />
+        <circle cx="240" cy="230" r="7.5" stroke="none" fill="blue" />
+
+        <g id="yeti-eyes-pupils">
+            <circle cx="202.5" cy="237.5" r="2.5" stroke="none" fill="#ffffcc" />
+            <circle cx="237.5" cy="232.5" r="2.5" stroke="none" fill="#ffffcc" />
+        </g>
+    </g>
+
+    <g id="yeti-mouth">
+        <ellipse cx="220" cy="280" rx="30" ry="20" stroke="red" stroke-width="5" transform="rotate(-35, 220, 280)" />
+
+        <g id="yeti-mouth-teeth" clip-path="url(#yeti-mouth-clip-path)">
+            <path
+                stroke="antiquelace"
+                stroke-width="5"
+                fill="#ffff66"
+                d="M 200,265 L 205,285 L 210,260 Z"
+            />
+            <path
+                stroke="antiquelace"
+                stroke-width="5"
+                fill="#ffff66"
+                d="M 230,255 L 235,275 L 240,250 Z"
+            />
+        </g>
+    </g>
+
+    <g id="yeti-book">
+        <g id="yeti-book-pages">
+            <path
+                stroke="black"
+                stroke-width="2"
+                fill="white"
+                d="M 168,358 V 338 L 220,358 V 370 Z"
+            />
+            <path
+                stroke="black"
+                stroke-width="2"
+                fill="white"
+                d="M 164,354 V 338 L 220,358 V 374 Z"
+            />
+            <path
+                stroke="black"
+                stroke-width="2"
+                fill="white"
+                d="M 160,350 V 338 L 220,358 V 370 Z"
+            />
+            <path
+                stroke="black"
+                stroke-width="2"
+                fill="white"
+                d="M 292,348 V 352 L 220,358 V 370 Z"
+            />
+        </g>
+
+        <g id="yeti-book-cover">
+            <path
+                stroke="none"
+                fill="#662200"
+                d="M 150,340 L 220,360 L 310,350 V 460 L 210,470 L 150,450 Z"
+            />
+            <rect x="240" y="380" width="50" height="25" stroke="none" fill="#ffcc00" />
+            <ellipse cx="215" cy="415" rx="10" ry="55" stroke="none" fill="#561200" />
+        </g>
+    </g>
+</svg>
