@@ -1,38 +1,140 @@
+import React, { Component } from 'react'
 import Link from 'next/link'
+import { withRouter } from 'next/router'
 import { connect } from 'react-redux'
 
 import { store, storeWrapper } from '../../redux/store/store'
-import { fetchAllPosts } from '../../redux/actions/postActions'
+import { fetchAllPosts, updatePost, deletePost } from '../../redux/actions/postActions'
+import Sidebar from '../../components/sidebar'
 
 import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
 
 import styles from '../../styles/Blog/Post.module.css'
 
 
-const Post = props => {
-  const { post } = props
-  if (!post || post.not_found) {
-    return (
-      <article className={styles.post}>
+class Post extends Component {
+  constructor(props) {
+    super(props)
+
+    const { title, content } = props.post ? props.post : ''
+
+    this.state = {
+      editPost: false,
+      title,
+      content,
+    }
+  }
+
+  editPostBtn = event => {
+    this.setState({
+      editPost: true,
+    })
+  }
+
+  deletePostBtn = event => {
+    const { deletePost, post, router } = this.props
+
+    const confirmDelete = confirm(`Are you sure you want to delete post ${post.title} ?`)
+
+    deletePost(post.slug, confirmDelete)
+
+    if (confirmDelete) {
+      router.push('/blog')
+    }
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+
+    const { updatePost, post, router } = this.props
+    const { title, content } = this.state
+
+    updatePost({
+      slug: post.slug,
+      title,
+      content,
+    })
+
+    this.setState({
+      editPost: false,
+    })
+
+    router.push('/blog')
+  }
+
+  render() {
+    const { editPost } = this.state
+    const { post, errors } = this.props
+    let { user } = this.props
+    user = user ? user.user : null
+    let pageContent
+
+    if (!post || post.not_found) {
+      pageContent = 
         <Link href='/contact'>
           <p>This post has not been created yet. If you would like to see it, send me a message <a>here</a>.</p>
         </Link>
-      </article>
+    } else {
+      const { created_at, updated_at } = post
+      const { title, content } = this.state
+      pageContent = 
+        editPost ?
+          <form onSubmit={this.handleSubmit}>
+            <input type='text' name='title' value={title} onChange={this.handleChange} />
+            <textarea name='content' value={content} onChange={this.handleChange} />
+            <button type='submit'>Submit Changes</button>
+          </form> :
+          <>
+            {user && user.is_admin ? <button onClick={this.editPostBtn}>Edit Post</button> : null}
+            {user && user.is_admin ? <button onClick={this.deletePostBtn}>Delete Post</button> : null}
+            <article className={styles.post}>
+              <h2>{title}</h2>
+              <h6>{(created_at === updated_at) ? 'Posted at' : 'Updated at'} {updated_at}</h6>
+              <p>{content}</p>
+            </article>
+          </>
+    }
+
+    return (
+      <>
+        <Sidebar />
+
+        {errors && errors.length > 0 ?
+          <div className='errors'>
+            <ul>
+              {errors.map((error, index) => <li key={index}>{error}</li>)}
+            </ul>
+          </div> :
+            null}
+
+        {pageContent}
+      </>
     )
   }
-  const { title, content, created_at, updated_at } = post
-
-  return (
-    <article className={styles.post}> 
-      <h2>{title}</h2>
-      <h6>{(created_at === updated_at) ? 'Posted at' : 'Updated at'} {updated_at}</h6>
-      <p>{content}</p>
-    </article>
-  )
 }
 
 
-export default Post
+const mapStateToProps = ({ user }) => {
+  return {
+    user,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updatePost: ({ slug, ...editFormInfo }) => dispatch(updatePost(slug, editFormInfo)),
+    deletePost: (slug, confirmDelete) => dispatch(deletePost(slug, confirmDelete)),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Post))
 
 
 export const getStaticPaths = async () => {
@@ -75,7 +177,7 @@ export const getStaticProps = storeWrapper.getStaticProps(
 
     return {
       props: {
-        post
+        post,
       }
     }
   }
