@@ -1,0 +1,26 @@
+.postsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.post {
+    margin: 15px;
+}
+
+.post a {
+    text-decoration: underline;
+}
+
+.post a:hover {
+    color: blue;
+}
+
+.editPostForm {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: 45vh;
+  margin: auto;
+  background-color: white;
+}

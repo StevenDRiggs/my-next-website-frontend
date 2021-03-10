@@ -22,14 +22,14 @@ class Navbar extends Component {
         <ul>
           <Link href='/about'>
             <a>
-              <li className={router.pathname ==='/about' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
+              <li className={router.pathname === '/about' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
                 About
               </li>
             </a>
           </Link>
           <Link href='/portfolio'>
             <a>
-              <li className={router.pathname ==='/portfolio' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
+              <li className={router.pathname === '/portfolio' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
                 Portfolio
               </li>
             </a>
@@ -50,7 +50,7 @@ class Navbar extends Component {
           </Link>
           <Link href='/contact'>
             <a>
-              <li className={router.pathname ==='/contact' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
+              <li className={router.pathname === '/contact' ? `${styles.navlink} ${styles.active}` : styles.navlink}>
                 Contact Me
               </li>
             </a>

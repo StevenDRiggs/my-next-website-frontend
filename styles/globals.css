@@ -14,6 +14,9 @@ html {
   background-color: rgba(84, 88, 127, 0.3);
 }
 
+a {
+  cursor: pointer;
+}
 
 .chrysalis-logo {
   width: 10%;
@@ -32,6 +35,13 @@ html {
     align-items: center;
     text-align: center;
     width: 40%;
+}
+
+.errors {
+  position: fixed;
+  top: 15vh;
+  color: red;
+  text-align: center;
 }
 
 @media screen and (600px < width < 1000px) {
