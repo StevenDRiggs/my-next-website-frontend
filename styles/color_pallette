@@ -1,0 +1,16 @@
+bg = background-color
+
+html bg: rgba(84, 88, 127, 0.3)
+.errors color: red
+.navbar bg: #012738
+.navlink:hover bg, .navlink.active bg: #6a66e0
+.navlink, .navlink:active, .navlink:visited color: whitesmoke
+.comingSoonDiv bg: rgba(0, 0, 0, 0.25)
+.comingSoonText color: white
+.modal bg: rgb(84, 88, 127)
+.closeBtn:hover bg, .closeBtn:focus bg: red
+.btn background: radial-gradient(ellipse at center, #d3a9a9, #1d8554)
+.post a:hover color: blue
+.editPostForm bg: white
+.sidebar bg: white
+.link:hover color: blue

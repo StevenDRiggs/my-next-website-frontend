@@ -41,6 +41,34 @@ const App = ({ Component, pageProps}) => {
       <div className='main-display'>
         <Component {...pageProps} />
       </div>
+
+      <footer className="pageFooter">
+        <p>
+          Photo by <a
+            href="https://unsplash.com/@eliy_fin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Laura Ollier
+          </a> on <a
+            href="https://unsplash.com/photos/1XnXnRdzGbk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Unsplash
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Powered by{' '}
+            <img src="/vercel.svg" alt="Vercel Logo" className="vercelLogo" />
+          </a>
+        </p>
+      </footer>
     </>
   )
 }

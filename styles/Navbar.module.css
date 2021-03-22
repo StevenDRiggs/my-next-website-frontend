@@ -24,30 +24,3 @@
   text-decoration: none;
   color: whitesmoke;
 }
-
-
-@media screen and (max-width: 600px) {
-  .navbar {
-    position: fixed;
-    width: 4em;
-    height: 100vh;
-  }
-
-  .navbar ul {
-    flex-direction: column;
-    height: 100%;
-    margin-left: 0;
-    padding: 0 0 3em 0;
-  }
-
-  .navlink {
-    padding: 0;
-    font-size: 0.8rem;
-  }
-}
-
-@media screen and (600px < width < 1000px) {
-  .navbar {
-    padding-left: 70px;
-  }
-}
