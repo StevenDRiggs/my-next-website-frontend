@@ -5,12 +5,6 @@
   box-sizing: border-box;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 html {
   background:
     linear-gradient(rgba(84, 88, 127, 0.8), rgba(84, 88, 127, 0.8)),
@@ -19,6 +13,12 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .chrysalis-logo {
@@ -56,7 +56,7 @@ html {
   height: 1em;
 }
 
-/* .main-display {
+.main-display {
     display: flex;
     margin: 15% auto;
     justify-content: center;
@@ -65,7 +65,7 @@ html {
     width: 40%;
 }
 
-.errors {
+/* .errors {
   position: fixed;
   top: 15vh;
   color: red;

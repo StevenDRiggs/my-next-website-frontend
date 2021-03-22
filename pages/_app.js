@@ -44,7 +44,7 @@ const App = ({ Component, pageProps}) => {
 
       <footer className="pageFooter">
         <p>
-          Photo by <a
+          Background Photo by <a
             href="https://unsplash.com/@eliy_fin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
             target="_blank"
             rel="noopener noreferrer"
