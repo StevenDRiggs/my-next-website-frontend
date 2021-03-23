@@ -87,6 +87,7 @@ class Blog extends Component {
                   {user && user.is_admin ? <button onClick={() => this.editPostBtn(post)}>Edit Post</button> : null}
                   {user && user.is_admin ? <button onClick={() => this.deletePostBtn(post)}>Delete Post</button> : null}
                   <p>{post.content}</p>
+                  <br />
                 </article>
               ))
               : <p>Loading Posts...</p>

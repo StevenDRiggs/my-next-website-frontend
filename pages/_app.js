@@ -42,33 +42,35 @@ const App = ({ Component, pageProps}) => {
         <Component {...pageProps} />
       </div>
 
-      <footer className="pageFooter">
-        <p>
-          Background Photo by <a
-            href="https://unsplash.com/@eliy_fin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-            target="_blank"
-            rel="noopener"
-          >
-            Laura Ollier
-          </a> on <a
-            href="https://unsplash.com/photos/1XnXnRdzGbk"
-            target="_blank"
-            rel="noopener"
-          >
-            Unsplash
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener"
-          >
-            Powered by{' '}
-            <img src="/vercel.svg" alt="Vercel Logo" className="vercelLogo" />
-          </a>
-        </p>
-      </footer>
+      {router.route.match(/\/blog/) ? null :
+        <footer className="pageFooter">
+          <p>
+            Background Photo by <a
+              href="https://unsplash.com/@eliy_fin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+              target="_blank"
+              rel="noopener"
+            >
+              Laura Ollier
+            </a> on <a
+              href="https://unsplash.com/photos/1XnXnRdzGbk"
+              target="_blank"
+              rel="noopener"
+            >
+              Unsplash
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener"
+            >
+              Powered by{' '}
+              <img src="/vercel.svg" alt="Vercel Logo" className="vercelLogo" />
+            </a>
+          </p>
+        </footer>
+      }
     </>
   )
 }

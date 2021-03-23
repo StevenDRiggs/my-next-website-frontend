@@ -1,23 +1,22 @@
-/* .sidebar {
+.sidebar {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: fixed;
     right: 0;
-    top: 4rem;
+    top: 0;
     padding: 25px;
-    background-color: white;
 }
 
-.link {
-    text-decoration: underline;
-}
-
-.link:hover {
-    color: blue;
+.sidebar a {
+  text-decoration: underline;
 }
 
 .form {
     display: none;
-} */
+}
+
+.button {
+  background-color: #07f5;
+}
