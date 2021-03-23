@@ -29,6 +29,22 @@ export const fetchAllPosts = () => {
           })
         }
       })
+      .catch(error => {
+        let error_msg
+
+        if (error.errno === 'ECONNREFUSED') {
+          error_msg = 'Error communicating with server'
+        } else {
+          error_msg = error.message
+        }
+
+        dispatch({
+          type: 'PROCESS_ERRORS',
+          payload: {
+            errors: [error_msg],
+          },
+        })
+      })
 
     return postsAction
   }
