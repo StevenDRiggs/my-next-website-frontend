@@ -52,7 +52,7 @@ class LoginForm extends Component {
         <input type='text' name='usernameOrEmail' value={usernameOrEmail} onChange={this.handleChange} placeholder='Username or Email' required />
         <input type='password' name='password' value={password} onChange={this.handleChange} placeholder='Password' required />
 
-        <button type='submit'>Log In</button>
+        <button type='submit' className={styles.button}>Log In</button>
       </form>
     )
   }

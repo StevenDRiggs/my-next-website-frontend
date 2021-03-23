@@ -15,8 +15,20 @@
 
 .form {
     display: none;
+    height: 10rem;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form * {
+  color: #555;
 }
 
 .button {
   background-color: #07f5;
+  color: #ccc;
+}
+
+.cancelButton {
+  background-color: #5005;
 }

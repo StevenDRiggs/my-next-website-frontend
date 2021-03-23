@@ -54,7 +54,7 @@ class SignupForm extends Component {
         <input type='email' name='email' value={email} onChange={this.handleChange} placeholder='Email' required />
         <input type='password' name='password' value={password} onChange={this.handleChange} placeholder='Password' required />
 
-        <button type='submit'>Sign Up</button>
+        <button type='submit' className={styles.button}>Sign Up</button>
       </form>
     )
   }
