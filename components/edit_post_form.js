@@ -37,13 +37,14 @@ class EditPostForm extends Component {
 
   render() {
     const { title, content } = this.state
-    const { styles } = this.props
+    const { styles, hideForm } = this.props
 
     return (
-      <form id='editPostForm' className={styles.editPostForm} onSubmit={this.handleSubmit}>
-        <input id='editPostFormTitle' type='text' name='title' value={title} onChange={this.handleChange} />
-        <textarea id='editPostFormContent' name='content' value={content} onChange={this.handleChange} />
-        <button type='submit'>Update</button>
+      <form id='editPostForm' className={styles.popupForm} onSubmit={this.handleSubmit}>
+        <input id='editPostFormTitle' className={styles.formInput} type='text' name='title' value={title} onChange={this.handleChange} />
+        <textarea id='editPostFormContent' className={styles.formInput} name='content' value={content} onChange={this.handleChange} />
+        <button className={styles.formSubmitButton} type='submit'>Update</button>
+        <button className={styles.cancelButton} type='button' onClick={hideForm}>Cancel</button>
       </form>
     )
   }

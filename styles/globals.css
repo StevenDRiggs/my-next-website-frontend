@@ -56,7 +56,21 @@ a:hover {
   height: 1em;
 }
 
-.main-display {
+.WTFHeading {
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 5rem;
+}
+
+.WTFHeading span {
+  font-family: 'Misplaced', monotype;  /* 'Misplaced' from https://www.fontspace.com/misplaced-font-f2801 */
+  background: -webkit-radial-gradient(slategrey, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mainDisplay {
     display: flex;
     margin: 15% auto;
     justify-content: center;

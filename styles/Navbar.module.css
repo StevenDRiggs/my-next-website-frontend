@@ -4,6 +4,7 @@
   position: sticky;
   top: 0;
   background-color: #012738;
+  z-index: 12;
 }
 
 .navbar ul {

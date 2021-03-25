@@ -1,26 +1,37 @@
-/* .postsContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.post h3 {
+  color: #bca767;
+  background: radial-gradient(rgba(84, 88, 127, 1.0) 45%, rgba(84, 88, 127, 0) 55%);
 }
 
-.post {
-    margin: 15px;
+.post h3:hover {
+  color: slategrey;
 }
 
-.post a {
-    text-decoration: underline;
+.blueButton {
+  background-color: #07f5;
 }
 
-.post a:hover {
-    color: blue;
+.redButton {
+  background-color: #5005;
 }
 
-.editPostForm {
+.formSubmitButton {
+  background-color: #07fc;
+}
+
+.cancelButton {
+  background-color: #500c;
+}
+
+.popupForm {
   display: flex;
   position: fixed;
   flex-direction: column;
   top: 45vh;
   margin: auto;
-  background-color: white;
-} */
+  background-color: ghostwhite;
+}
+
+.formInput {
+  color: #333;
+}

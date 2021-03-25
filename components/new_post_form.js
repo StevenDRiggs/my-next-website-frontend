@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 
 import { newPost } from '../redux/actions/postActions'
 
-import styles from '../styles/Blog/NewPostForm.module.css'
-
 import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
 
 
@@ -40,13 +38,15 @@ class NewPostForm extends Component {
   }
 
   render() {
+    const { styles, hideForm } = this.props
     const { title, content } = this.state
 
     return (
-      <form id='newPostForm' className={styles.newPostForm} onSubmit={this.handleSubmit}>
-        <input id='newPostFormTitle' type='text' name='title' value={title} onChange={this.handleChange} />
-        <textarea id='newPostFormContent' name='content' value={content} onChange={this.handleChange} />
-        <button type='submit'>Create Post</button>
+      <form id='newPostForm' className={styles.popupForm} onSubmit={this.handleSubmit}>
+        <input id='newPostFormTitle' className={styles.formInput} type='text' name='title' value={title} onChange={this.handleChange} />
+        <textarea id='newPostFormContent' className={styles.formInput} name='content' value={content} onChange={this.handleChange} />
+        <button className={styles.formSubmitButton} type='submit'>Create Post</button>
+        <button className={styles.cancelButton} type='button' onClick={hideForm}>Cancel</button>
       </form>
     )
   }

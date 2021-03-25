@@ -38,7 +38,9 @@ const App = ({ Component, pageProps}) => {
         </a>
       </Link>
 
-      <div className='main-display'>
+      {router.route.match(/\/blog/) ? <h2 className='WTFHeading'>When Thoughts <span>Fracture...</span></h2> : null}
+
+      <div className='mainDisplay'>
         <Component {...pageProps} />
       </div>
 
