@@ -82,7 +82,7 @@ class Blog extends Component {
           </div> :
             null}
 
-        <div className={styles.postsContainer}>
+        <div>
           {user && user.is_admin ? <button className={styles.blueButton} onClick={this.newPostBtn}>New Post</button> : null}
           {newPost ? <NewPostForm styles={styles} hideForm={this.hideForm} /> : null}
 
@@ -90,9 +90,9 @@ class Blog extends Component {
 
           {posts.length > 0 ?
               posts.map(post => (
-                <article className={styles.post} key={post.id}>
+                <article key={post.id}>
                   <Link href={`/blog/${post.slug}`}>
-                    <a><h3>{post.title}</h3></a>
+                    <a><h3 className={styles.postTitle}>{post.title}</h3></a>
                   </Link>
                   <h6>{post.updated_at}</h6>
                   {user && user.is_admin ? <button className={styles.blueButton} onClick={() => this.editPostBtn(post)}>Edit Post</button> : null}

@@ -9,7 +9,7 @@ import Sidebar from '../../components/sidebar'
 
 import BACKEND_DOMAIN from '../../BACKEND_DOMAIN'
 
-import styles from '../../styles/Blog/Post.module.css'
+import styles from '../../styles/Blog/index.module.css'
 
 
 class Post extends Component {
@@ -68,6 +68,12 @@ class Post extends Component {
     router.push('/blog')
   }
 
+  hideForm = event => {
+    this.setState({
+      editPost: false,
+    })
+  }
+
   render() {
     const { editPost } = this.state
     const { post, errors } = this.props
@@ -85,16 +91,17 @@ class Post extends Component {
       const { title, content } = this.state
       pageContent = 
         editPost ?
-          <form onSubmit={this.handleSubmit}>
-            <input type='text' name='title' value={title} onChange={this.handleChange} />
-            <textarea name='content' value={content} onChange={this.handleChange} />
-            <button type='submit'>Submit Changes</button>
+          <form className={styles.popupForm} onSubmit={this.handleSubmit}>
+            <input className={styles.formInput} type='text' name='title' value={title} onChange={this.handleChange} />
+            <textarea className={styles.formInput} name='content' value={content} onChange={this.handleChange} />
+            <button className={styles.formSubmitButton} type='submit'>Submit Changes</button>
+            <button className={styles.cancelButton} type='button' onClick={this.hideForm}>Cancel</button>
           </form> :
           <>
-            {user && user.is_admin ? <button onClick={this.editPostBtn}>Edit Post</button> : null}
-            {user && user.is_admin ? <button onClick={this.deletePostBtn}>Delete Post</button> : null}
-            <article className={styles.post}>
-              <h2>{title}</h2>
+            {user && user.is_admin ? <button className={styles.blueButton} onClick={this.editPostBtn}>Edit Post</button> : null}
+            {user && user.is_admin ? <button className={styles.redButton} onClick={this.deletePostBtn}>Delete Post</button> : null}
+            <article>
+              <h2 className={styles.postTitle}>{title}</h2>
               <h6>{(created_at === updated_at) ? 'Posted at' : 'Updated at'} {updated_at}</h6>
               <p>{content}</p>
             </article>

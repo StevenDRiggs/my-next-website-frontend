@@ -1,9 +1,9 @@
-.post h3 {
+.postTitle {
   color: #bca767;
   background: radial-gradient(rgba(84, 88, 127, 1.0) 45%, rgba(84, 88, 127, 0) 55%);
 }
 
-.post h3:hover {
+.postTitle:hover {
   color: slategrey;
 }
 
