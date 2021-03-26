@@ -30,6 +30,8 @@
   top: 45vh;
   margin: auto;
   background-color: ghostwhite;
+  z-index: 25;
+  border: 10px black solid;
 }
 
 .formInput {

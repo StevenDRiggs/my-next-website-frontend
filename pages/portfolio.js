@@ -27,6 +27,7 @@ const Portfolio = () => {
             </a>
           </Link>
         </div>
+
         {/* <div className={styles.gridCell}>
           <Link href='#'>
             <a>
@@ -51,6 +52,7 @@ const Portfolio = () => {
             </a>
           </Link>
         </div> */}
+
         <div>
           <p>More Coming Soon...</p>
         </div>

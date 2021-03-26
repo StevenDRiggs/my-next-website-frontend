@@ -23,15 +23,15 @@ class Resume extends Component {
     })
   }
 
-  downloadButton = event => {
+  downloadBtn = event => {
     window.open('/Steven_Riggs_Resume.pdf', '_blank', 'download')
   }
 
-  openNewWindowButton = event => {
+  openNewWindowBtn = event => {
     window.open('https://docs.google.com/document/d/e/2PACX-1vSDy7V_2jS4XrzExfGiq12rP90TiK2KM2J1UzdRgkXnJNH-p5U7IZavSjl6WfYQfOvskCeqnNQwKPx_/pub')
   }
 
-  emailResumeButton = event => {
+  emailResumeBtn = event => {
     const buttons = document.querySelectorAll(`.${styles.btn}`)
     buttons.forEach(button => button.disabled = true)
 
