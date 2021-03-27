@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import Image from 'next/image'
+
+import EmailIcon from '../images/emailIcon.svg'
+import DownloadIcon from '../images/downloadIcon.svg'
+import PopoutIcon from '../images/popoutIcon.svg'
 
 import styles from '../styles/Blog/Sidebar.module.css'
 
@@ -39,9 +44,9 @@ class ResumeSidebar extends Component {
   render() {
     return (
       <div className={styles.sidebar}>
-        <button className={styles.button} onClick={this.showEmailForm} styles={styles}>EmailBtn</button>
-        <button className={styles.button} onClick={this.downloadBtn}>DownloadBtn</button>
-        <button className={styles.button} onClick={this.popoutBtn}>PopoutBtn</button>
+        <button className={styles.smallButton} onClick={this.showEmailForm} styles={styles}><EmailIcon /></button>
+        <button className={styles.smallButton} onClick={this.downloadBtn}><DownloadIcon /></button>
+        <button className={styles.smallButton} onClick={this.popoutBtn}><PopoutIcon /></button>
       </div>
     )
   }
