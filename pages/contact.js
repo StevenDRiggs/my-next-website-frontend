@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import BACKEND_DOMAIN from '../BACKEND_DOMAIN'
 
-import styles from '../styles/Contact.module.css'
+import styles from '../styles/Blog/index.module.css'
 
 
 const initialState = {
@@ -20,16 +20,14 @@ class Contact extends Component {
 
   handleChange = event => {
     this.setState({
-      ...this.state,
       [event.target.name]: event.target.value,
     })
   }
 
   handleCheckbox = event => {
-    this.setState({
-      ...this.state,
-      response: !this.state.response,
-    })
+    this.setState(prevState => ({
+      response: !prevState.response,
+    }))
   }
 
   handleSubmit = event => {
@@ -49,24 +47,36 @@ class Contact extends Component {
     })
       .then(response => response.json())
       .then(json => alert(`Thank you for reaching out, ${json.name}!\nA copy of your communication has been sent to ${json.email}.\n${json.response ? 'I will respond to you as soon as possible.' : ''}`))
+      .catch(error => {
+        let error_msg
+
+        if (error.errno === 'ECONNREFUSED') {
+          error_msg = 'Error communicating with server'
+        } else {
+          error_msg = error.message
+        }
+
+        alert(`${error_msg}\nPlease try again later.`)
+      })
   }
 
   render() {
     const { name, email, subject,  message, response } = this.state
     return (
-      <form className={styles.contactForm} onSubmit={this.handleSubmit}>
+      <form className={styles.popupForm} onSubmit={this.handleSubmit}>
         <fieldset>
-          <input type='text' name='name' onChange={this.handleChange} value={name} placeholder='Name' required /><br />
-          <input type='email' name='email' onChange={this.handleChange} value={email} placeholder='Email' required /><br />
-          <textarea name='message' onChange={this.handleChange} value={message} placeholder='What can I help you with?' required /><br />
+          <input type='text' className={styles.formInput} name='name' onChange={this.handleChange} value={name} placeholder='Name' required /><br />
+          <input type='email' className={styles.formInput} name='email' onChange={this.handleChange} value={email} placeholder='Email' required /><br />
+          <textarea className={styles.formInput} name='message' onChange={this.handleChange} value={message} placeholder='What can I help you with?' required /><br />
 
-          <label htmlFor='responseCheckbox'>Would you like a response?</label>
+          <label htmlFor='responseCheckbox' className={styles.formInput}>Would you like a response?</label>
+          <br />
           <input type='checkbox' name='response' id='responseCheckbox' onChange={this.handleCheckbox} checked={response} />
-          </fieldset>
+        </fieldset>
 
         <br />
 
-        <button type='submit'>Submit</button>
+        <button type='submit' className={styles.formSubmitButton}>Submit</button>
       </form>
     )
   }

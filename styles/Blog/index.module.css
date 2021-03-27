@@ -27,7 +27,6 @@
   display: flex;
   position: fixed;
   flex-direction: column;
-  top: 45vh;
   margin: auto;
   background-color: ghostwhite;
   z-index: 25;
@@ -36,4 +35,5 @@
 
 .formInput {
   color: #333;
+  width: 100%;
 }
