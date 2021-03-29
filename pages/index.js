@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React, { Component } from 'react'
 
 //import Caterpillar from '../animations/components/caterpillar.svg'
-import { wiggle } from '../animations/scripts/caterpillar'
+import { wiggle, walk, blink, path } from '../animations/scripts/caterpillar'
 
 import styles from '../styles/Home.module.css'
 
@@ -10,6 +10,11 @@ import styles from '../styles/Home.module.css'
 class Home extends Component {
   caterpillar = 
     <svg id="caterpillar" viewBox="0 0 300 300" style={{border: "2px green solid"}}>
+      <defs>
+        <clipPath id="eyes-clip-path">
+          <rect x="65" y="125" width="70" height="30" />
+        </clipPath>
+      </defs>
       <circle id="tail3" className='segment' cx="250" cy="150" r="20" fill="violet"></circle>
       <circle id="tail2" className='segment' cx="230" cy="160" r="30" fill="indigo"></circle>
       <g id="tail1" className='segment'>
@@ -45,7 +50,7 @@ class Home extends Component {
         </g>
         <circle id="head-head" cx="100" cy="150" r="50" fill="red"></circle>
         <g id="head-face">
-          <g id="head-face-eyes">
+          <g id="head-face-eyes" clip-path="url(#eyes-clip-path)">
             <circle id="head-face-eyes-left" cx="80" cy="140" r="10" fill="white"></circle>
             <circle id="head-face-eyes-right" cx="120" cy="140" r="10" fill="white"></circle>
           </g>
@@ -55,7 +60,10 @@ class Home extends Component {
     </svg>
 
     componentDidMount() {
+      walk()
       wiggle()
+      blink()
+      path()
     }
 
   render() {
