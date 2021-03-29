@@ -1,15 +1,16 @@
 import Head from 'next/head'
 import React, { Component } from 'react'
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 
-//import Caterpillar from '../animations/components/caterpillar.svg'
-import { wiggle, walk, blink, path } from '../animations/scripts/caterpillar'
+import Chrysalis from '../images/logoReact.svg'
+import { wiggle, walk, blink, path, hideChrysalis } from '../animations/scripts/caterpillar'
 
 import styles from '../styles/Home.module.css'
 
 
 class Home extends Component {
   caterpillar = 
-    <svg id="caterpillar" viewBox="0 0 300 300" style={{border: "2px green solid"}}>
+    <svg id="caterpillar" viewBox="0 0 300 300"> 
       <defs>
         <clipPath id="eyes-clip-path">
           <rect x="65" y="125" width="70" height="30" />
@@ -60,11 +61,19 @@ class Home extends Component {
     </svg>
 
     componentDidMount() {
+      const targetElement = document.querySelector('#SVGs')
+      disableBodyScroll(targetElement)
+
+      hideChrysalis()
       walk()
       wiggle()
       blink()
       path()
     }
+
+  componentWillUnmount() {
+    clearAllBodyScrollLocks()
+  }
 
   render() {
     return (
@@ -79,7 +88,14 @@ class Home extends Component {
         </Head>
 
         <main>
-          {this.caterpillar}
+          <div id='SVGs'>
+            <div className={styles.chrysalisSVG}>
+              <Chrysalis id='chrysalis' />
+            </div>
+            <div className={styles.caterpillarSVG}>
+              {this.caterpillar}
+            </div>
+          </div>
         </main>
       </div>
     )

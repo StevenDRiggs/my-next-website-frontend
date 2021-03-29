@@ -78,12 +78,18 @@ const walkStop = () => {
 }
 
 const blink = () => {
-  const tl = gsap.timeline({repeat: -1})
+  const tl = gsap.timeline({id: 'blink', repeat: -1})
 
   tl.to('#eyes-clip-path', {y: 20, duration: 0.1})
     .to('#eyes-clip-path', {y: 0, duration: 0.1})
 
   tl.repeatDelay(1.8)
+}
+
+const blinkStop = () => {
+  const walkAnim = gsap.getById('blink')
+    walkAnim.restart()
+    walkAnim.pause()
 }
 
 const path = () => {
@@ -92,8 +98,31 @@ const path = () => {
   tl.from('#caterpillar', {x: 1000, duration: 5, onComplete: () => {
     walkStop()
     wiggleStop()
+    cocoon()
   }})
 }
 
+const cocoon = () => {
+  const tl = gsap.timeline({onComplete: () => blinkStop()})
+  const random = gsap.utils.random(-100, 100, 10, true)
 
-export { wiggle, walk, blink, path }
+  tl.addLabel('rotate')
+    .to('#caterpillar', {rotation: 50, duration: 1}, 'rotate')
+    .to('.segment', {rotation: -50, duration: 1}, 'rotate')
+    .to('#head', {x: -10, y: 15, duration: 1}, 'rotate')
+    .addLabel('makeCocoon')
+    .to('#caterpillar', {height: 0, y: 150, duration: 3}, 'makeCocoon')
+    .to('#chrysalis', {opacity: 1, duration: 3}, 'makeCocoon')
+    .from('#chrysalis', {height: 0, duration: 3}, 'makeCocoon')
+    .addLabel('moveCocoon')
+    .to('#chrysalis', {x: random(), y: random(), opacity: 0, duration: 2}, 'moveCocoon')
+    .to('.chrysalis-logo', {opacity: 1, duration: 2}, 'moveCocoon')
+}
+
+const hideChrysalis = () => {
+  gsap.to('.chrysalis-logo', {opacity: 0, duration: 0})
+  gsap.to('#chrysalis', {opacity: 0, duration: 0})
+}
+
+
+export { wiggle, walk, blink, path, hideChrysalis }
