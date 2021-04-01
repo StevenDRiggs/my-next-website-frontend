@@ -44,7 +44,7 @@ const App = ({ Component, pageProps}) => {
         <Component {...pageProps} />
       </div>
 
-      {/* {router.route.match(/\/blog/) || router.route.match(/\/resume/) ? null :
+      {router.route.match(/\/blog/) || router.route.match(/\/resume/) ? null :
         <footer className="pageFooter">
           <p>
             Background Photo by <a
@@ -72,7 +72,7 @@ const App = ({ Component, pageProps}) => {
             </a>
           </p>
         </footer>
-      } */}
+      }
     </>
   )
 }
