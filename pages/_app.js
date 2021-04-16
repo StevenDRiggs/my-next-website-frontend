@@ -27,6 +27,10 @@ const App = ({ Component, pageProps}) => {
     <>
       <Head>
         <title>Steven Riggs{titleAddon}</title>
+        <link rel="icon" type="image/ico" href="/favicon.ico?" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
         <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap' />
       </Head>
 
