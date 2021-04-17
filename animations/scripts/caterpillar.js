@@ -1,128 +1,112 @@
 import { gsap } from 'gsap'
 
 
-const wiggle = () => {
-  const tl = gsap.timeline({id: 'wiggle', repeat: -1})
+const closeEyes = () => {
+  const tl = gsap.timeline({id: 'closeEyes'})
 
-  tl.to('#head', {y: -5})
-    .to('#head', {y: 0})
-    .to('#body1', {y: -5})
-    .to('#body1', {y: 0})
-    .to('#body2', {y: -5})
-    .to('#body2', {y: 0})
-    .to('#body3', {y: -5})
-    .to('#body3', {y: 0})
-    .to('#tail1', {y: -5})
-    .to('#tail1', {y: 0})
-    .to('#tail2', {y: -5})
-    .to('#tail2', {y: 0})
-    .to('#tail3', {y: -5})
-    .to('#tail3', {y: 0})
-
-  tl.totalDuration(1.6)
+  tl.to('#caterpillar > ellipse', {attr: {ry: 0.1}, duration: 1})
 }
 
-const wiggleStop = () => {
-const wiggleAnim = gsap.getById('wiggle')
-    wiggleAnim.restart()
-    wiggleAnim.pause()
+const openEyes = () => {
+  const tl = gsap.timeline({id: 'openEyes'})
+
+  tl.to('#caterpillar > ellipse', {opacity: 1, duration: 0})
+    .to('#caterpillar > ellipse', {attr: {ry: 1.5}, duration: 1.5})
 }
 
-const walk = () => {
-  const tl = gsap.timeline({id: 'walk', repeat: -1}).yoyo(true)
-
-  tl.addLabel('step1')
-    .to('#head', {y: 5}, 'step1')
-    .to('#head-antennae-left-pistil', {x: -5, y: 7}, 'step1')
-    .to('#head-antennae-right-pistil', {x: 5, y: 7}, 'step1')
-    .to('#body1', {y: -5}, 'step1')
-    .to('#body1-leg-left', {rotation: 45}, 'step1')
-    .to('#body1-leg-right', {rotation: 0}, 'step1')
-    .to('#body2', {y: 5}, 'step1')
-    .to('#body2-leg-right', {rotation: -45}, 'step1')
-    .to('#body2-leg-left', {rotation: 0}, 'step1')
-    .to('#body3', {y: -5}, 'step1')
-    .to('#body3-leg-left', {rotation: 45}, 'step1')
-    .to('#body3-leg-right', {rotation: 0}, 'step1')
-    .to('#tail1', {y: 5}, 'step1')
-    .to('#tail1-leg-right', {rotation: -45}, 'step1')
-    .to('#tail1-leg-left', {rotation: 0}, 'step1')
-    .to('#tail2', {y: -5}, 'step1')
-    .to('#tail3', {y: 5}, 'step1')
-    .addLabel('step2')
-    .to('#head', {y: 0}, 'step2')
-    .to('#head-antennae-left-pistil', {x: 0, y: 0}, 'step2')
-    .to('#head-antennae-right-pistil', {x: 0, y: 0}, 'step2')
-    .to('#body1', {y: 0}, 'step2')
-    .to('#body1-leg-left', {rotation: 0}, 'step2')
-    .to('#body1-leg-right', {rotation: -45}, 'step2')
-    .to('#body2', {y: 0}, 'step2')
-    .to('#body2-leg-right', {rotation: 0}, 'step2')
-    .to('#body2-leg-left', {rotation: 45}, 'step2')
-    .to('#body3', {y: 0}, 'step2')
-    .to('#body3-leg-left', {rotation: 0}, 'step2')
-    .to('#body3-leg-right', {rotation: -45}, 'step2')
-    .to('#tail1', {y: 0}, 'step2')
-    .to('#tail1-leg-right', {rotation: 0}, 'step2')
-    .to('#tail1-leg-left', {rotation: 45}, 'step2')
-    .to('#tail2', {y: 0}, 'step2')
-    .to('#tail3', {y: 0}, 'step2')
-
-  tl.duration(0.8)
+const showCaterpillar = () => {
+  gsap.to('#caterpillar > path', {opacity: 0, duration: 0})
+  gsap.to('#caterpillar > circle[fill=none]', {opacity: 0, duration: 0})
 }
 
-const walkStop = () => {
-  const walkAnim = gsap.getById('walk')
-    walkAnim.restart()
-    walkAnim.pause()
-}
+const pageRollIn = () => {
+  const tl = gsap.timeline({id: 'pageRollIn'})
 
-const blink = () => {
-  const tl = gsap.timeline({id: 'blink', repeat: -1})
+  tl.addLabel('setup')
+    .to('#caterpillar > circle', {opacity: 0, duration: 0}, 'setup')
+    .to('#caterpillar > path', {opacity: 0, duration: 0}, 'setup')
+    .to('#caterpillar > ellipse', {opacity: 0, duration: 0}, 'setup')
 
-  tl.to('#eyes-clip-path', {y: 20, duration: 0.1})
-    .to('#eyes-clip-path', {y: 0, duration: 0.1})
+    .addLabel('redRollIn', '+=1')
+    .to('#caterpillar > path[fill="#fe0000"]', {opacity: 1, duration: 0}, 'redRollIn')
+    .from('#caterpillar > path[fill="#fe0000"]', {x: 500}, 'redRollIn')
+    .to('#caterpillar > circle[fill="#fe0000"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="39"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="39"]', {'stroke-dasharray': '100%', duration: 0.1})
 
-  tl.repeatDelay(1.8)
-}
+    .addLabel('removeRedPaper')
+    .to('#caterpillar > path[fill="#fe0000"]', {opacity: 0}, 'removeRedPaper')
+    .to('#caterpillar > circle[fill=none]', {opacity: 0}, 'removeRedPaper')
 
-const blinkStop = () => {
-  const walkAnim = gsap.getById('blink')
-    walkAnim.restart()
-    walkAnim.pause()
-}
+    .addLabel('orangeRollIn')
+    .to('#caterpillar > path[fill="#fea400"]', {opacity: 1, duration: 0}, 'orangeRollIn')
+    .from('#caterpillar > path[fill="#fea400"]', {x: 500}, 'orangeRollIn')
+    .to('#caterpillar > circle[fill="#fea400"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="44"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="44"]', {'stroke-dasharray': '100%', duration: 0.1})
 
-const path = () => {
-  const tl = gsap.timeline()
+    .addLabel('removeOrangePaper')
+    .to('#caterpillar > path[fill="#fea400"]', {opacity: 0}, 'removeOrangePaper')
+    .to('#caterpillar > circle[fill=none][cx="44"]', {opacity: 0}, 'removeOrangePaper')
 
-  tl.from('#caterpillar', {x: 1000, duration: 5, onComplete: () => {
-    walkStop()
-    wiggleStop()
-    cocoon()
-  }})
-}
+    .addLabel('yellowRollIn')
+    .to('#caterpillar > path[fill="#fefe00"]', {opacity: 1, duration: 0}, 'yellowRollIn')
+    .from('#caterpillar > path[fill="#fefe00"]', {x: 500}, 'yellowRollIn')
+    .to('#caterpillar > circle[fill="#fefe00"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="48.5"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="48.5"]', {'stroke-dasharray': '100%', duration: 0.1})
 
-const cocoon = () => {
-  const tl = gsap.timeline({onComplete: () => blinkStop()})
-  const random = gsap.utils.random(-100, 100, 10, true)
+    .addLabel('removeYellowPaper')
+    .to('#caterpillar > path[fill="#fefe00"]', {opacity: 0}, 'removeYellowPaper')
+    .to('#caterpillar > circle[fill=none][cx="48.5"]', {opacity: 0}, 'removeYellowPaper')
 
-  tl.addLabel('rotate')
-    .to('#caterpillar', {rotation: 50, duration: 1}, 'rotate')
-    .to('.segment', {rotation: -50, duration: 1}, 'rotate')
-    .to('#head', {x: -10, y: 15, duration: 1}, 'rotate')
-    .addLabel('makeCocoon')
-    .to('#caterpillar', {height: 0, y: 150, duration: 3}, 'makeCocoon')
-    .to('#chrysalis', {opacity: 1, duration: 3}, 'makeCocoon')
-    .from('#chrysalis', {height: 0, duration: 3}, 'makeCocoon')
-    .addLabel('moveCocoon')
-    .to('#chrysalis', {x: random(), y: random(), opacity: 0, duration: 2}, 'moveCocoon')
-    .to('.chrysalis-logo', {opacity: 1, duration: 2}, 'moveCocoon')
-}
+    .addLabel('greenRollIn')
+    .to('#caterpillar > path[fill="#00fe00"]', {opacity: 1, duration: 0}, 'greenRollIn')
+    .from('#caterpillar > path[fill="#00fe00"]', {x: 500}, 'greenRollIn')
+    .to('#caterpillar > circle[fill="#00fe00"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="53"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="53"]', {'stroke-dasharray': '100%', duration: 0.1})
 
-const hideChrysalis = () => {
-  gsap.to('.chrysalis-logo', {opacity: 0, duration: 0})
-  gsap.to('#chrysalis', {opacity: 0, duration: 0})
+    .addLabel('removeGreenPaper')
+    .to('#caterpillar > path[fill="#00fe00"]', {opacity: 0}, 'removeGreenPaper')
+    .to('#caterpillar > circle[fill=none][cx="53"]', {opacity: 0}, 'removeGreenPaper')
+
+    .addLabel('blueRollIn')
+    .to('#caterpillar > path[fill="#0000fe"]', {opacity: 1, duration: 0}, 'blueRollIn')
+    .from('#caterpillar > path[fill="#0000fe"]', {x: 500}, 'blueRollIn')
+    .to('#caterpillar > circle[fill="#0000fe"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="57"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="57"]', {'stroke-dasharray': '100%', duration: 0.1})
+
+    .addLabel('removeBluePaper')
+    .to('#caterpillar > path[fill="#0000fe"]', {opacity: 0}, 'removeBluePaper')
+    .to('#caterpillar > circle[fill=none][cx="57"]', {opacity: 0}, 'removeBluePaper')
+
+    .addLabel('indigoRollIn')
+    .to('#caterpillar > path[fill="#4b0081"]', {opacity: 1, duration: 0}, 'indigoRollIn')
+    .from('#caterpillar > path[fill="#4b0081"]', {x: 500}, 'indigoRollIn')
+    .to('#caterpillar > circle[fill="#4b0081"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="60"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="60"]', {'stroke-dasharray': '100%', duration: 0.1})
+
+    .addLabel('removeIndigoPaper')
+    .to('#caterpillar > path[fill="#4b0081"]', {opacity: 0}, 'removeIndigoPaper')
+    .to('#caterpillar > circle[fill=none][cx="60"]', {opacity: 0}, 'removeIndigoPaper')
+
+    .addLabel('violetRollIn')
+    .to('#caterpillar > path[fill="#84f"]', {opacity: 1, duration: 0}, 'violetRollIn')
+    .from('#caterpillar > path[fill="#84f"]', {x: 500}, 'violetRollIn')
+    .to('#caterpillar > circle[fill="#84f"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="62"]', {opacity: 1, duration: 0})
+    .to('#caterpillar > circle[fill=none][cx="62"]', {'stroke-dasharray': '100%', duration: 0.1})
+
+    .addLabel('removeVioletPaper')
+    .to('#caterpillar > path[fill="#84f"]', {opacity: 0}, 'removeVioletPaper')
+    .to('#caterpillar > circle[fill=none][cx="62"]', {opacity: 0}, 'removeVioletLabel')
+
+    .then(openEyes)
 }
 
 
-export { wiggle, walk, blink, path, hideChrysalis }
+export { pageRollIn, showCaterpillar, openEyes, closeEyes }
+//export { wiggle, walk, blink, path, hideChrysalis }

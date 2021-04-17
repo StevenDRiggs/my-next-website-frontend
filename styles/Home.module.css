@@ -1,8 +1,8 @@
 .caterpillarSVG {
   position: fixed;
-  top: 20vh;
-  left: 30vw;
-  width: 40vw;
+  top: 0;
+  left: 0;
+  width: 100vw;
 }
 
 .chrysalisSVG {
