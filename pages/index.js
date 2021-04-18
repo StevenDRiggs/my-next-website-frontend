@@ -4,7 +4,7 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 
 import Caterpillar from '../animations/components/caterpillar.svg'
 import Chrysalis from '../images/logoReact.svg'
-import { pageRollIn, showCaterpillar, openEyes, closeEyes } from '../animations/scripts/caterpillar'
+import { pageRollIn, showCaterpillar, openEyes, closeEyes, smile, blink } from '../animations/scripts/caterpillar'
 //import { wiggle, walk, blink, path, hideChrysalis } from '../animations/scripts/caterpillar'
 
 import styles from '../styles/Home.module.css'
@@ -15,10 +15,7 @@ class Home extends Component {
       const targetElement = document.querySelector('#SVGs')
       disableBodyScroll(targetElement)
 
-      //showCaterpillar()
       pageRollIn()
-      //setTimeout(openEyes, 2000)
-      //setTimeout(closeEyes, 5000)
     }
 
   componentWillUnmount() {

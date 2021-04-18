@@ -11,3 +11,11 @@
   left: 22vw;
   width: 56vw;
 }
+
+.myQuote {
+  position: fixed;
+  top: 50vh;
+  left: 30vw;
+  z-index: -1;
+  color: #ccc0;
+}

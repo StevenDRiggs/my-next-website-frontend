@@ -1,41 +1,143 @@
 <svg viewBox="0 0 100 100"> 
   <defs>
-    <clipPath id="eyesClipPath">
-      <ellipse cx="36.5" cy="31" rx="1.5" ry="0" />
-      <ellipse cx="41.5" cy="31" rx="1.5" ry="0" />
+    <mask id="redPaperMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="39" cy="29" r="6.5" fill="#fff" />
+    </mask>
+    <mask id="orangePaperMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="44" cy="29.5" r="6" fill="#fff" />
+    </mask>
+    <mask id="yellowPaperMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="48.5" cy="29" r="6" fill="#fff" />
+    </mask>
+    <mask id="greenPaperMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="53" cy="29.5" r="5.5" fill="#fff" />
+    </mask>
+    <mask id="bluePaperMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="57" cy="29" r="4" fill="#fff" />
+    </mask>
+    <mask id="indigoPaperMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="60" cy="29.5" r="3" fill="#fff" />
+    </mask>
+    <mask id="violetPaperMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="62" cy="29" r="2" fill="#fff" />
+    </mask>
+
+    <mask id="violetCircleMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="60" cy="29.5" r="3" fill="#000" />
+    </mask>
+    <mask id="indigoCircleMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="57" cy="29" r="4" fill="#000" />
+    </mask>
+    <mask id="blueCircleMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="53" cy="29.5" r="5.5" fill="#000" />
+    </mask>
+    <mask id="greenCircleMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="48.5" cy="29" r="6" fill="#000" />
+    </mask>
+    <mask id="yellowCircleMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="44" cy="29.5" r="6" fill="#000" />
+    </mask>
+    <mask id="orangeCircleMask">
+      <rect x="0" y="0" width="100" height="100" fill="#fff" />
+      <circle cx="39" cy="29" r="6.5" fill="#000" />
+    </mask>
+
+    <clipPath id="smileClipPath">
+      <ellipse cx="39" cy="36" rx="4" ry="1.5" />
     </clipPath>
   </defs>
 
   <g stroke="none">
-    <rect x="0" y="0" width="100" height="100" fill="#84f" />
-    <circle cx="62" cy="29" r="2" fill="#84f" />
-    <circle cx="62" cy="29" r="2" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" />
+    <g id="myQuote">
+      <text x="250" y="300" transform="scale(0.1)" fill="#ccc0">If you cannot play like a child, then you have never truly grown up.</text>
+    </g>
 
-    <rect x="0" y="0" width="100" height="100" fill="#4b0081" />
-    <circle cx="60" cy="29.5" r="3" fill="#4b0081" />
-    <circle cx="60" cy="29.5" r="3" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" />
+    <g id="antennae">
+      <path d="M 38.5,26 A 3 4 0 0 0 36.5,20" stroke="#010101" stroke-width="0.3" fill="none" />
+      <circle cx="36.5" cy="20" r="1" fill="#aaa" />
 
-    <rect x="0" y="0" width="100" height="100" fill="#0000fe" />
-    <circle cx="57" cy="29" r="4" fill="#0000fe" />
-    <circle cx="57" cy="29" r="4" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" />
+      <path d="M 38.5,26 A 3 4 0 0 1 42,21" stroke="#010101" stroke-width="0.3" fill="none" />
+      <circle cx="42" cy="21" r="1" fill="#bbb" />
+    </g>
 
-    <rect x="0" y="0" width="100" height="100" fill="#00fe00" />
-    <circle cx="53" cy="29.5" r="5.5" fill="#00fe00" />
-    <circle cx="53" cy="29.5" r="5.5" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" />
+    <g id="legs">
+      <line x1="55" y1="26" x2="55" y2="32" stroke="#010102" stroke-width="0.5" />
+      <line x1="59" y1="26" x2="59" y2="32" stroke="#010102" stroke-width="0.5" />
 
-    <rect x="0" y="0" width="100" height="100" fill="#fefe00" />
-    <circle cx="48.5" cy="29" r="6" fill="#fefe00" />
-    <circle cx="48.5" cy="29" r="6" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" />
+      <line x1="51" y1="26.5" x2="51" y2="32.5" stroke="#010102" stroke-width="0.5" />
+      <line x1="55" y1="26.5" x2="55" y2="32.5" stroke="#010102" stroke-width="0.5" />
 
-    <rect x="0" y="0" width="100" height="100" fill="#fea400" />
-    <circle cx="44" cy="29.5" r="6" fill="#fea400" />
-    <circle cx="44" cy="29.5" r="6" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" />
+      <line x1="46.5" y1="26" x2="46.5" y2="33" stroke="#010102" stroke-width="0.5" />
+      <line x1="50.5" y1="26" x2="50.5" y2="33" stroke="#010102" stroke-width="0.5" />
 
-    <rect x="0" y="0" width="100" height="100" fill="#fe0000" />
-    <circle cx="39" cy="29" r="6.5" fill="#fe0000" />
-    <circle cx="39" cy="29" r="6.5" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" />
+      <line x1="42" y1="26.5" x2="42" y2="33.5" stroke="#010102" stroke-width="0.5" />
+      <line x1="46" y1="26.5" x2="46" y2="33.5" stroke="#010102" stroke-width="0.5" />
+    </g>
 
-    <ellipse cx="36.5" cy="27" rx="1.5" ry="0.1" fill="#fefefe" />
-    <ellipse cx="41.5" cy="27" rx="1.5" ry="0.1" fill="#fefefe" />
+    <g id="violet">
+      <rect x="0" y="0" width="100" height="100" fill="#84f" mask="url(#violetPaperMask)" />
+      <circle cx="62" cy="29" r="2" fill="#84f" />
+    </g>
+
+    <g id="indigo">
+      <rect x="0" y="0" width="100" height="100" fill="#4b0081" mask="url(#indigoPaperMask)" />
+      <circle cx="60" cy="29.5" r="3" fill="#4b0081" />
+    </g>
+
+    <g id="blue">
+      <rect x="0" y="0" width="100" height="100" fill="#0000fe" mask="url(#bluePaperMask)" />
+      <circle cx="57" cy="29" r="4" fill="#0000fe" />
+    </g>
+
+    <g id="green">
+      <rect x="0" y="0" width="100" height="100" fill="#00fe00" mask="url(#greenPaperMask)" />
+      <circle cx="53" cy="29.5" r="5.5" fill="#00fe00" />
+    </g>
+
+    <g id="yellow">
+      <rect x="0" y="0" width="100" height="100" fill="#fefe00" mask="url(#yellowPaperMask)" />
+      <circle cx="48.5" cy="29" r="6" fill="#fefe00" />
+    </g>
+
+    <g id="orange">
+      <rect x="0" y="0" width="100" height="100" fill="#fea400" mask="url(#orangePaperMask)" />
+      <circle cx="44" cy="29.5" r="6" fill="#fea400" />
+    </g>
+
+    <g id="red">
+      <rect x="0" y="0" width="100" height="100" fill="#fe0000" mask="url(#redPaperMask)" />
+      <circle cx="39" cy="29" r="6.5" fill="#fe0000" />
+    </g>
+
+    <g id="outlines">
+      <circle id="violetCutout" cx="62" cy="29" r="2" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" mask="url(#violetCircleMask)" />
+      <circle id="indigoCutout" cx="60" cy="29.5" r="3" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" mask="url(#indigoCircleMask)" />
+      <circle id="blueCutout" cx="57" cy="29" r="4" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" mask="url(#blueCircleMask)" />
+      <circle id="greenCutout" cx="53" cy="29.5" r="5.5" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" mask="url(#greenCircleMask)" />
+      <circle id="yellowCutout" cx="48.5" cy="29" r="6" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" mask="url(#yellowCircleMask)" />
+      <circle id="orangeCutout" cx="44" cy="29.5" r="6" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" mask="url(#orangeCircleMask)" />
+      <circle id="redCutout" cx="39" cy="29" r="6.5" fill="none" stroke="#fefefe" stroke-width="0.1" stroke-dasharray="0.1% 15%" />
+    </g>
+
+    <g id="eyes">
+      <ellipse cx="36.5" cy="27" rx="1.5" ry="0.1" fill="#fefefe" />
+      <ellipse cx="41.5" cy="27" rx="1.5" ry="0.1" fill="#fefefe" />
+    </g>
+
+    <g id="smile">
+      <ellipse cx="39" cy="27.5" rx="3" ry="4.5" stroke="#fefefe" stroke-width="1" fill="none" clip-path="url(#smileClipPath)" />
+    </g>
   </g>
 </svg>
