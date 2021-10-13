@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 
 import { storeWrapper } from '../redux/store/store'
 import Navbar from '../components/navbar'
-import Logo from '../images/logoReact.svg'
 
 import '../styles/globals.css'
 
@@ -35,12 +34,6 @@ const App = ({ Component, pageProps}) => {
       </Head>
 
       <Navbar />
-
-      <Link href='/'>
-        <a>
-          <Logo className='chrysalis-logo' />
-        </a>
-      </Link>
 
       {router.route.match(/\/blog/) ? <h2 className='WTFHeading'>When Thoughts <span>Fracture...</span></h2> : null}
 

@@ -26,17 +26,6 @@ a:hover {
   color: #eaeaea;
 }
 
-.chrysalis-logo {
-  width: 10%;
-  min-width: 50px;
-  max-width: 75px;
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-}
-
 .pageFooter {
   width: 100%;
   height: 100px;

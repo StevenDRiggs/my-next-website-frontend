@@ -3,20 +3,22 @@ import React, { Component } from 'react'
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 
 import Caterpillar from '../animations/components/caterpillar.svg'
-import Chrysalis from '../images/logoReact.svg'
-import { pageRollIn, showCaterpillar, openEyes, closeEyes, smile, blink } from '../animations/scripts/caterpillar'
-//import { wiggle, walk, blink, path, hideChrysalis } from '../animations/scripts/caterpillar'
+import Chrysalis from '../animations/components/chrysalis.svg'
+import { pageRollIn, skipAnim, replayAnim } from '../animations/scripts/caterpillar'
 
 import styles from '../styles/Home.module.css'
 
 
 class Home extends Component {
-    componentDidMount() {
-      const targetElement = document.querySelector('#SVGs')
-      disableBodyScroll(targetElement)
+  componentDidMount() {
+    const targetElement = document.querySelector('#SVGs')
+    disableBodyScroll(targetElement)
 
-      pageRollIn()
-    }
+    document.addEventListener('click', skipAnim)
+    document.addEventListener('keydown', skipAnim)
+
+    pageRollIn()
+  }
 
   componentWillUnmount() {
     clearAllBodyScrollLocks()
@@ -36,6 +38,7 @@ class Home extends Component {
 
         <main>
           <div id='SVGs'>
+            <Chrysalis id='chrysalis' className={styles.chrysalisSVG} onClick={replayAnim} />
             <Caterpillar id='caterpillar' className={styles.caterpillarSVG} />
           </div>
         </main>

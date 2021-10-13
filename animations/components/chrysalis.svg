@@ -339,6 +339,7 @@
     </defs>
 
     <g id="background">
+      <circle cx="57.5" cy="39.5" r="40" stroke="none" fill="#333" />
       <path
          id="outlineBackground"
          stroke="none"
